@@ -1,0 +1,16 @@
+{
+  "name": "quips",
+  "version": "1.0.0",
+  "description": "### Typical entry level JavaScript challenges expressed as snappy one-liners.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
