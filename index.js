@@ -1,6 +1,7 @@
 // 1: Palindromes!
 const checkIfPalindrome = (word) => {
-  return [...word];
+  // of course, you could always just use reverse here
+  return word === [...word].reverse().join("");
 };
 
 const printAnswer = (fn, ...args) => {
@@ -10,4 +11,5 @@ const printAnswer = (fn, ...args) => {
   console.log("Result of", fn.name, "is", result);
 };
 
-printAnswer(checkIfPalindrome, "word");
+printAnswer(checkIfPalindrome, "milk");
+printAnswer(checkIfPalindrome, "racecar");
