@@ -1,6 +1,13 @@
 // 1: Palindromes!
 const checkIfPalindrome = (word) => {
-  return word === [...word].reverse().join("");
+  return (
+    (result = Array(word.length)
+      .fill(null)
+      .map((k, i) => {
+        let spread = [...word];
+        return spread[spread.length - (i + 1)];
+      })).join("") === word
+  );
 };
 
 const fizzy = (countLimit) => {
@@ -25,4 +32,5 @@ const printAnswer = (fn, ...args) => {
 // printAnswer(checkIfPalindrome, "milk");
 // printAnswer(checkIfPalindrome, "racecar");
 
-printAnswer(fizzy, 50);
+// printAnswer(fizzy, 50);
+// console.log([].fill());
