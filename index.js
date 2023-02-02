@@ -62,10 +62,18 @@ const reverser = (phrase) => {
   return phrase.split("").reduce((pv, cv) => cv + pv);
 };
 
+const intReverser = (numeric) => {
+  return Number.parseInt(
+    String(numeric)
+      .split("")
+      .reduce((pv, cv) => cv + pv)
+  );
+};
+
 // printAnswer(checkIfPalindrome, "milk");
 // printAnswer(checkIfPalindrome, "racecar");
-printAnswer(reverser, "expert");
-
+// printAnswer(reverser, "expert");
+// printAnswer(intReverser, 125);
 // printAnswer(fizzy, 50);
 // printAnswer(fibby, 10);
 
