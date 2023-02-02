@@ -58,8 +58,21 @@ const printAnswer = (fn, ...args) => {
   console.log("Result of", fn.name, "is", result);
 };
 
+const reverser = (phrase) => {
+  return phrase.split("").reduce((pv, cv) => cv + pv);
+};
+
 // printAnswer(checkIfPalindrome, "milk");
 // printAnswer(checkIfPalindrome, "racecar");
+printAnswer(reverser, "expert");
 
 // printAnswer(fizzy, 50);
-printAnswer(fibby, 10);
+// printAnswer(fibby, 10);
+
+// function* inlineGenerator() {
+//   let step = 0;
+//   step++;
+//   yield step;
+// }
+
+// console.log(Array(10).fill(inlineGenerator().next.value));
