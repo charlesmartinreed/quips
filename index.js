@@ -78,35 +78,53 @@ const capitalizeString = (sentence) => {
 };
 
 const maxCharInString = (sentence) => {
-  // return sentence.split(" ");
-  return sentence.split(" ").map((word) => {
-    let charMap = {};
-    for (const char of word) {
-      if (charMap[char]) {
-        charMap[char] += 1;
-      } else {
-        charMap[char] = 1;
+  return [sentence.replace(/[^A-Z]/gi, "")]
+    .map((word) => {
+      let charMap = {};
+      for (const char of word) {
+        if (charMap[char]) {
+          charMap[char] += 1;
+        } else {
+          charMap[char] = 1;
+        }
       }
-    }
-    return charMap;
-  });
+      return charMap;
+    })
+    .map((charMapValues) => {
+      let maxCount = 0;
+      let maxValue = [];
+      for (const [k, v] of Object.entries(charMapValues)) {
+        if (v >= maxCount) {
+          maxCount = v;
+          maxValue = [...maxValue, k];
+        }
+      }
+      return maxCount > 1
+        ? maxValue.length > 1
+          ? `${maxValue
+              .toString()
+              .toUpperCase()} each appear ${maxCount} times in \"${sentence}\".`
+          : `${maxValue.toString().toUpperCase()} appears ${maxCount} ${
+              maxCount > 1 ? "times" : "time"
+            } in \"${sentence}\".`
+        : `No single letter appears more than once in \"${sentence}\".`;
+    })
+    .join("");
 };
-
-let test = [
-  { a: 1, b: 2, c: 3 },
-  { a: 4, b: 5, c: 6 },
-];
-
-// for (const [k, v] of Object.entries(test)) {
-//   console.log("k is", k, "v is", v);
-// }
 
 // printAnswer(checkIfPalindrome, "milk");
 // printAnswer(checkIfPalindrome, "racecar");
+
 // printAnswer(reverser, "expert");
+
 // printAnswer(intReverser, 125);
+
 // printAnswer(fizzy, 50);
+
 // printAnswer(fibby, 10);
+
 // printAnswer(capitalizeString, "this is a test sentence");
 
-// printAnswer(maxCharInString, "this is a test sentence");
+printAnswer(maxCharInString, "this is a test sentence 9182-3 )!@#");
+printAnswer(maxCharInString, "success");
+printAnswer(maxCharInString, "abcdefghij");
