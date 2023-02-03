@@ -1,4 +1,10 @@
-// 1: Palindromes!
+const printAnswer = (fn, ...args) => {
+  let params = args.length > 1 ? args : args[0];
+  let result = fn(params);
+
+  console.log("Result of", fn.name, "is", result);
+};
+
 const checkIfPalindrome = (word) => {
   return (
     (result = Array(word.length)
@@ -50,13 +56,6 @@ function* fibGenerator(currenvalues) {
   yield currenvalues[currenvalues.length - 1] +
     currenvalues[currenvalues.length - 2];
 }
-
-const printAnswer = (fn, ...args) => {
-  let params = args.length > 1 ? args : args[0];
-  let result = fn(params);
-
-  console.log("Result of", fn.name, "is", result);
-};
 
 const reverser = (phrase) => {
   return phrase.split("").reduce((pv, cv) => cv + pv);
@@ -112,6 +111,10 @@ const maxCharInString = (sentence) => {
     .join("");
 };
 
+const maxValueInCollection = (values) => {
+  return values.reduce((pv, cv) => (cv > pv ? cv : pv));
+};
+
 // printAnswer(checkIfPalindrome, "milk");
 // printAnswer(checkIfPalindrome, "racecar");
 
@@ -125,6 +128,10 @@ const maxCharInString = (sentence) => {
 
 // printAnswer(capitalizeString, "this is a test sentence");
 
-printAnswer(maxCharInString, "this is a test sentence 9182-3 )!@#");
-printAnswer(maxCharInString, "success");
-printAnswer(maxCharInString, "abcdefghij");
+// printAnswer(maxCharInString, "this is a test sentence 9182-3 )!@#");
+// printAnswer(maxCharInString, "success");
+// printAnswer(maxCharInString, "abcdefghij");
+printAnswer(
+  maxValueInCollection,
+  [1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0]
+);
