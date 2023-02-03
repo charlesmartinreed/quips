@@ -70,17 +70,43 @@ const intReverser = (numeric) => {
   );
 };
 
+const capitalizeString = (sentence) => {
+  return sentence
+    .split(" ")
+    .map((word) => word.slice(0, 1).toUpperCase() + word.slice(1))
+    .join(" ");
+};
+
+const maxCharInString = (sentence) => {
+  // return sentence.split(" ");
+  return sentence.split(" ").map((word) => {
+    let charMap = {};
+    for (const char of word) {
+      if (charMap[char]) {
+        charMap[char] += 1;
+      } else {
+        charMap[char] = 1;
+      }
+    }
+    return charMap;
+  });
+};
+
+let test = [
+  { a: 1, b: 2, c: 3 },
+  { a: 4, b: 5, c: 6 },
+];
+
+// for (const [k, v] of Object.entries(test)) {
+//   console.log("k is", k, "v is", v);
+// }
+
 // printAnswer(checkIfPalindrome, "milk");
 // printAnswer(checkIfPalindrome, "racecar");
 // printAnswer(reverser, "expert");
 // printAnswer(intReverser, 125);
 // printAnswer(fizzy, 50);
 // printAnswer(fibby, 10);
+// printAnswer(capitalizeString, "this is a test sentence");
 
-// function* inlineGenerator() {
-//   let step = 0;
-//   step++;
-//   yield step;
-// }
-
-// console.log(Array(10).fill(inlineGenerator().next.value));
+// printAnswer(maxCharInString, "this is a test sentence");
