@@ -1,9 +1,12 @@
-const printAnswer = (fn, ...args) => {
-  let params = args.length > 1 ? args : args[0];
-  let result = fn(params);
+function printAnswer(fn) {
+  // per MDN, arguments is only exposed in non arrow functions
+  // that explains why it didn't work for me before...
+
+  const args = Array.prototype.slice.call(arguments, 1);
+  let result = fn(...args);
 
   console.log("Result of", fn.name, "is", result);
-};
+}
 
 const checkIfPalindrome = (word) => {
   return (
@@ -115,6 +118,13 @@ const maxValueInCollection = (values) => {
   return values.reduce((pv, cv) => (cv > pv ? cv : pv));
 };
 
+// direction: 'asc' or 'desc'
+const sortValues = (values, direction) => {
+  return direction === "asc"
+    ? values.sort((a, b) => a - b)
+    : values.sort((a, b) => b - a);
+};
+
 // printAnswer(checkIfPalindrome, "milk");
 // printAnswer(checkIfPalindrome, "racecar");
 
@@ -131,7 +141,9 @@ const maxValueInCollection = (values) => {
 // printAnswer(maxCharInString, "this is a test sentence 9182-3 )!@#");
 // printAnswer(maxCharInString, "success");
 // printAnswer(maxCharInString, "abcdefghij");
-printAnswer(
-  maxValueInCollection,
-  [1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0]
-);
+// printAnswer(
+//   maxValueInCollection,
+//   [1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0]
+// );
+
+// printAnswer(sortValues, [1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0], "asc");
