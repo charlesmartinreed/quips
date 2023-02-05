@@ -118,6 +118,12 @@ const maxValueInCollection = (...values) => {
   return values.reduce((pv, cv) => (cv > pv ? cv : pv));
 };
 
+const longestWordInCollection = (...words) => {
+  return words
+    .sort((a, b) => b.length - a.length)
+    .filter((word, _, arr) => word.length === arr[0].length);
+};
+
 // direction: 'asc' or 'desc'
 const sortValues = (direction, ...values) => {
   return direction === "asc"
@@ -141,5 +147,15 @@ const sortValues = (direction, ...values) => {
 // printAnswer(maxCharInString, "this is a test sentence 9182-3 )!@#");
 // printAnswer(maxCharInString, "success");
 // printAnswer(maxCharInString, "abcdefghij");
-printAnswer(maxValueInCollection, 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
-printAnswer(sortValues, "desc", 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
+// printAnswer(maxValueInCollection, 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
+printAnswer(
+  longestWordInCollection,
+  "test",
+  "word",
+  "for",
+  "here",
+  "this",
+  "collection"
+);
+printAnswer(longestWordInCollection, "test", "word", "for", "here", "this");
+// printAnswer(sortValues, "desc", 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
