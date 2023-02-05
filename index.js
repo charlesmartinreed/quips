@@ -114,12 +114,12 @@ const maxCharInString = (sentence) => {
     .join("");
 };
 
-const maxValueInCollection = (values) => {
+const maxValueInCollection = (...values) => {
   return values.reduce((pv, cv) => (cv > pv ? cv : pv));
 };
 
 // direction: 'asc' or 'desc'
-const sortValues = (values, direction) => {
+const sortValues = (direction, ...values) => {
   return direction === "asc"
     ? values.sort((a, b) => a - b)
     : values.sort((a, b) => b - a);
@@ -141,9 +141,5 @@ const sortValues = (values, direction) => {
 // printAnswer(maxCharInString, "this is a test sentence 9182-3 )!@#");
 // printAnswer(maxCharInString, "success");
 // printAnswer(maxCharInString, "abcdefghij");
-// printAnswer(
-//   maxValueInCollection,
-//   [1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0]
-// );
-
-// printAnswer(sortValues, [1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0], "asc");
+printAnswer(maxValueInCollection, 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
+printAnswer(sortValues, "desc", 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
