@@ -131,6 +131,20 @@ const sortValues = (direction, ...values) => {
     : values.sort((a, b) => b - a);
 };
 
+const dicedArrays = (blob, blobSize) => {};
+const flattenArrays = (outerArr) => {};
+
+const anagramChecker = (firstWord, secondWord) => {};
+
+const letterChanger = (phrase) => {
+  return phrase
+    .split("")
+    .map((x) =>
+      x.charCodeAt(0) >= 122 ? "a" : String.fromCharCode(x.charCodeAt(0) + 1)
+    )
+    .map((y) => y.replace(/[aeiou]/g, (match) => match.toUpperCase()));
+};
+
 // printAnswer(checkIfPalindrome, "milk");
 // printAnswer(checkIfPalindrome, "racecar");
 
@@ -148,14 +162,18 @@ const sortValues = (direction, ...values) => {
 // printAnswer(maxCharInString, "success");
 // printAnswer(maxCharInString, "abcdefghij");
 // printAnswer(maxValueInCollection, 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
-printAnswer(
-  longestWordInCollection,
-  "test",
-  "word",
-  "for",
-  "here",
-  "this",
-  "collection"
-);
-printAnswer(longestWordInCollection, "test", "word", "for", "here", "this");
+// printAnswer(
+//   longestWordInCollection,
+//   "test",
+//   "word",
+//   "for",
+//   "here",
+//   "this",
+//   "collection"
+// );
+// printAnswer(longestWordInCollection, "test", "word", "for", "here", "this");
 // printAnswer(sortValues, "desc", 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
+
+// printAnswer(anagramChecker, "cinema", "pilfer");
+// printAnswer(anagramChecker, "cinema", "iceman");
+printAnswer(letterChanger, "abcdefgzhun");
