@@ -131,7 +131,11 @@ const sortValues = (direction, ...values) => {
     : values.sort((a, b) => b - a);
 };
 
-const diceArray = (blob, blobSize) => {};
+const diceArray = (arr, sliceSize, startIndex) => {
+  return Array(Math.ceil(arr.length / sliceSize))
+    .fill([])
+    .map((n) => arr.splice(0, sliceSize));
+};
 
 const flattenArrays = (blob) => {
   return blob.reduce((acc, next) => {
@@ -178,10 +182,12 @@ const letterChanger = (phrase) => {
 // );
 // printAnswer(longestWordInCollection, "test", "word", "for", "here", "this");
 // printAnswer(sortValues, "desc", 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
-printAnswer(flattenArrays, [[1, [2, 3]], 4, [5, 6], [7], [8, 9]]);
 
-// console.log([].concat([1, 2, 3]));
-// console.log([].concat(5));
+printAnswer(diceArray, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3, 0);
+// printAnswer(flattenArrays, [[1, [2, 3]], 4, [5, 6], [7], [8, 9]]);
+
+// let test = [1, 2, 3, 4];
+// console.log(test.splice(1, 3), test);
 
 // printAnswer(anagramChecker, "cinema", "pilfer");
 // printAnswer(anagramChecker, "cinema", "iceman");
