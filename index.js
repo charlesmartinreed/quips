@@ -143,7 +143,17 @@ const flattenArrays = (blob) => {
   });
 };
 
-const anagramChecker = (firstWord, secondWord) => {};
+const anagramChecker = (firstWord, secondWord) => {
+  return firstWord.length === secondWord.length
+    ? firstWord
+        .split("")
+        .sort()
+        .map((letter) => secondWord.split("").includes(letter))
+        .includes(false)
+      ? false
+      : true
+    : false;
+};
 
 const letterChanger = (phrase) => {
   return phrase
@@ -182,13 +192,14 @@ const letterChanger = (phrase) => {
 // );
 // printAnswer(longestWordInCollection, "test", "word", "for", "here", "this");
 // printAnswer(sortValues, "desc", 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
-
-printAnswer(diceArray, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3, 0);
+// printAnswer(diceArray, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3, 0);
 // printAnswer(flattenArrays, [[1, [2, 3]], 4, [5, 6], [7], [8, 9]]);
 
-// let test = [1, 2, 3, 4];
-// console.log(test.splice(1, 3), test);
-
+// printAnswer(anagramChecker, "table", "bat");
 // printAnswer(anagramChecker, "cinema", "pilfer");
+// printAnswer(anagramChecker, "terrace", "believe");
 // printAnswer(anagramChecker, "cinema", "iceman");
+// printAnswer(anagramChecker, "cider", "cried");
+// printAnswer(anagramChecker, "link", "kiln");
+
 // printAnswer(letterChanger, "abcdefgzhun");
