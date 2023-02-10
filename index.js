@@ -8,6 +8,15 @@ function printAnswer(fn) {
   console.log("Result of", fn.name, "is", result);
 }
 
+const removeDuplicateItems = (...items) => {
+  // using filter and index of
+  return items.filter((item, index) => items.indexOf(item) === index);
+};
+
+const removeDuplicateItemsWithSet = (...items) => {
+  return Array.from(new Set(items));
+};
+
 const checkIfPalindrome = (word) => {
   return (
     (result = Array(word.length)
@@ -203,3 +212,27 @@ const letterChanger = (phrase) => {
 // printAnswer(anagramChecker, "link", "kiln");
 
 // printAnswer(letterChanger, "abcdefgzhun");
+printAnswer(
+  removeDuplicateItems,
+  1,
+  1,
+  2,
+  2,
+  2,
+  3,
+  4,
+  5,
+  6,
+  6,
+  6,
+  6,
+  7,
+  7,
+  8,
+  9,
+  9,
+  9,
+  9,
+  9,
+  10
+);
