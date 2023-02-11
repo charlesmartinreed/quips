@@ -17,6 +17,17 @@ const removeDuplicateItemsWithSet = (...items) => {
   return Array.from(new Set(items));
 };
 
+const returnFactorialOf = (base) => {
+  return base < 0
+    ? NaN
+    : base > 0
+    ? Array(Math.floor(base))
+        .fill(Math.floor(base))
+        .map((val, index) => (val -= index))
+        .reduce((acc, next) => acc * next)
+    : 1;
+};
+
 const checkIfPalindrome = (word) => {
   return (
     (result = Array(word.length)
@@ -173,6 +184,17 @@ const letterChanger = (phrase) => {
     .map((y) => y.replace(/[aeiou]/g, (match) => match.toUpperCase()));
 };
 
+// let dupArr = [1, 1, 2, 2, 2, 3, 4, 5, 6, 6, 6, 6, 7, 7, 8, 9, 9, 9, 9, 9, 10];
+// printAnswer(removeDuplicateItems, ...dupArr);
+// printAnswer(removeDuplicateItemsWithSet, ...dupArr);
+
+// printAnswer(returnFactorialOf, 5);
+// printAnswer(returnFactorialOf, 1);
+// printAnswer(returnFactorialOf, 1.9);
+// printAnswer(returnFactorialOf, 2.5);
+// printAnswer(returnFactorialOf, 0);
+// printAnswer(returnFactorialOf, -1);
+
 // printAnswer(checkIfPalindrome, "milk");
 // printAnswer(checkIfPalindrome, "racecar");
 
@@ -212,27 +234,3 @@ const letterChanger = (phrase) => {
 // printAnswer(anagramChecker, "link", "kiln");
 
 // printAnswer(letterChanger, "abcdefgzhun");
-printAnswer(
-  removeDuplicateItems,
-  1,
-  1,
-  2,
-  2,
-  2,
-  3,
-  4,
-  5,
-  6,
-  6,
-  6,
-  6,
-  7,
-  7,
-  8,
-  9,
-  9,
-  9,
-  9,
-  9,
-  10
-);
