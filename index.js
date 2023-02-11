@@ -28,6 +28,15 @@ const returnFactorialOf = (base) => {
     : 1;
 };
 
+const recursiveFactorialOf = (base) => {
+  if (base > 1) {
+    base = base * recursiveFactorialOf(base - 1);
+  }
+  return base;
+};
+
+printAnswer(recursiveFactorialOf, 8);
+
 const checkIfPalindrome = (word) => {
   return (
     (result = Array(word.length)
