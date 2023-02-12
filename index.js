@@ -193,6 +193,10 @@ const letterChanger = (phrase) => {
     .map((y) => y.replace(/[aeiou]/g, (match) => match.toUpperCase()));
 };
 
+const countTheVowels = (phrase) => {
+  return phrase.split("").filter((letter) => letter.match(/[aeiou]/gi)).length;
+};
+
 // let dupArr = [1, 1, 2, 2, 2, 3, 4, 5, 6, 6, 6, 6, 7, 7, 8, 9, 9, 9, 9, 9, 10];
 // printAnswer(removeDuplicateItems, ...dupArr);
 // printAnswer(removeDuplicateItemsWithSet, ...dupArr);
@@ -243,3 +247,6 @@ const letterChanger = (phrase) => {
 // printAnswer(anagramChecker, "link", "kiln");
 
 // printAnswer(letterChanger, "abcdefgzhun");
+printAnswer(countTheVowels, "there");
+printAnswer(countTheVowels, "rhythm");
+printAnswer(countTheVowels, "acerbic");
