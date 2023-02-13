@@ -266,6 +266,16 @@ const countTheVowels = (phrase) => {
   return phrase.split("").filter((letter) => letter.match(/[aeiou]/gi)).length;
 };
 
+const multiplicationClosure = (multiplicand) => {
+  return (multipler) => {
+    return multiplicand * multipler;
+  };
+};
+
+const multiplicandValue = multiplicationClosure(6);
+// console.log(multiplicandValue(3));
+// console.log(multiplicandValue(8));
+
 // printAnswer(countTheVowels, "there");
 // printAnswer(countTheVowels, "rhythm");
 // printAnswer(countTheVowels, "acerbic");
