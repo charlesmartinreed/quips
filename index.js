@@ -13,6 +13,10 @@ const removeDuplicateItems = (...items) => {
   return items.filter((item, index) => items.indexOf(item) === index);
 };
 
+// let dupArr = [1, 1, 2, 2, 2, 3, 4, 5, 6, 6, 6, 6, 7, 7, 8, 9, 9, 9, 9, 9, 10];
+// printAnswer(removeDuplicateItems, ...dupArr);
+// printAnswer(removeDuplicateItemsWithSet, ...dupArr);
+
 const removeDuplicateItemsWithSet = (...items) => {
   return Array.from(new Set(items));
 };
@@ -28,6 +32,13 @@ const returnFactorialOf = (base) => {
     : 1;
 };
 
+// printAnswer(returnFactorialOf, 5);
+// printAnswer(returnFactorialOf, 1);
+// printAnswer(returnFactorialOf, 1.9);
+// printAnswer(returnFactorialOf, 2.5);
+// printAnswer(returnFactorialOf, 0);
+// printAnswer(returnFactorialOf, -1);
+
 const recursiveFactorialOf = (base) => {
   if (base > 1) {
     base = base * recursiveFactorialOf(base - 1);
@@ -35,7 +46,7 @@ const recursiveFactorialOf = (base) => {
   return base;
 };
 
-printAnswer(recursiveFactorialOf, 8);
+// printAnswer(recursiveFactorialOf, 8);
 
 const checkIfPalindrome = (word) => {
   return (
@@ -48,6 +59,10 @@ const checkIfPalindrome = (word) => {
   );
 };
 
+// printAnswer(checkIfPalindrome, "abba");
+// printAnswer(checkIfPalindrome, "milk");
+// printAnswer(checkIfPalindrome, "racecar");
+
 const fizzy = (countLimit) => {
   return Array(countLimit)
     .fill(1)
@@ -59,6 +74,26 @@ const fizzy = (countLimit) => {
       return m;
     });
 };
+
+// printAnswer(fizzy, 50);
+
+const simpleFibby = (places) => {
+  return (function (currSequence) {
+    let iter = 0;
+    let sequence = [0, 1];
+
+    while (iter < places) {
+      iter++;
+      sequence.push(
+        sequence[sequence.length - 1] + sequence[sequence.length - 2]
+      );
+    }
+
+    return sequence;
+  })();
+};
+
+// printAnswer(simpleFibby, 10);
 
 const fibby = (placeCount) => {
   // return Array(1)
@@ -84,6 +119,8 @@ const fibby = (placeCount) => {
   return values;
 };
 
+// printAnswer(fibby, 10);
+
 function* fibGenerator(currenvalues) {
   yield currenvalues[currenvalues.length - 1] +
     currenvalues[currenvalues.length - 2];
@@ -93,6 +130,8 @@ const reverser = (phrase) => {
   return phrase.split("").reduce((pv, cv) => cv + pv);
 };
 
+// printAnswer(reverser, "expert");
+
 const intReverser = (numeric) => {
   return Number.parseInt(
     String(numeric)
@@ -101,12 +140,16 @@ const intReverser = (numeric) => {
   );
 };
 
+// printAnswer(intReverser, 125);
+
 const capitalizeString = (sentence) => {
   return sentence
     .split(" ")
     .map((word) => word.slice(0, 1).toUpperCase() + word.slice(1))
     .join(" ");
 };
+
+// printAnswer(capitalizeString, "this is a test sentence");
 
 const maxCharInString = (sentence) => {
   return [sentence.replace(/[^A-Z]/gi, "")]
@@ -143,15 +186,26 @@ const maxCharInString = (sentence) => {
     .join("");
 };
 
+// printAnswer(maxCharInString, "this is a test sentence 9182-3 )!@#");
+// printAnswer(maxCharInString, "success");
+// printAnswer(maxCharInString, "abcdefghij");
+
 const maxValueInCollection = (...values) => {
   return values.reduce((pv, cv) => (cv > pv ? cv : pv));
 };
+
+// printAnswer(maxValueInCollection, 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
 
 const longestWordInCollection = (...words) => {
   return words
     .sort((a, b) => b.length - a.length)
     .filter((word, _, arr) => word.length === arr[0].length);
 };
+
+let words = ["test", "word", "for", "here", "this", "collection"];
+let words2 = ["test", "word", "for", "here", "this"];
+// printAnswer(longestWordInCollection, ...words);
+// printAnswer(longestWordInCollection, ...words2);
 
 // direction: 'asc' or 'desc'
 const sortValues = (direction, ...values) => {
@@ -160,17 +214,23 @@ const sortValues = (direction, ...values) => {
     : values.sort((a, b) => b - a);
 };
 
+// printAnswer(sortValues, "desc", 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
+
 const diceArray = (arr, sliceSize, startIndex) => {
   return Array(Math.ceil(arr.length / sliceSize))
     .fill([])
     .map((n) => arr.splice(0, sliceSize));
 };
 
+// printAnswer(diceArray, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3, 0);
+
 const flattenArrays = (blob) => {
   return blob.reduce((acc, next) => {
     return [].concat(...acc, next);
   });
 };
+
+// printAnswer(flattenArrays, [[1, [2, 3]], 4, [5, 6], [7], [8, 9]]);
 
 const anagramChecker = (firstWord, secondWord) => {
   return firstWord.length === secondWord.length
@@ -184,6 +244,13 @@ const anagramChecker = (firstWord, secondWord) => {
     : false;
 };
 
+// printAnswer(anagramChecker, "table", "bat");
+// printAnswer(anagramChecker, "cinema", "pilfer");
+// printAnswer(anagramChecker, "terrace", "believe");
+// printAnswer(anagramChecker, "cinema", "iceman");
+// printAnswer(anagramChecker, "cider", "cried");
+// printAnswer(anagramChecker, "link", "kiln");
+
 const letterChanger = (phrase) => {
   return phrase
     .split("")
@@ -193,60 +260,12 @@ const letterChanger = (phrase) => {
     .map((y) => y.replace(/[aeiou]/g, (match) => match.toUpperCase()));
 };
 
+// printAnswer(letterChanger, "abcdefgzhun");
+
 const countTheVowels = (phrase) => {
   return phrase.split("").filter((letter) => letter.match(/[aeiou]/gi)).length;
 };
 
-// let dupArr = [1, 1, 2, 2, 2, 3, 4, 5, 6, 6, 6, 6, 7, 7, 8, 9, 9, 9, 9, 9, 10];
-// printAnswer(removeDuplicateItems, ...dupArr);
-// printAnswer(removeDuplicateItemsWithSet, ...dupArr);
-
-// printAnswer(returnFactorialOf, 5);
-// printAnswer(returnFactorialOf, 1);
-// printAnswer(returnFactorialOf, 1.9);
-// printAnswer(returnFactorialOf, 2.5);
-// printAnswer(returnFactorialOf, 0);
-// printAnswer(returnFactorialOf, -1);
-
-// printAnswer(checkIfPalindrome, "milk");
-// printAnswer(checkIfPalindrome, "racecar");
-
-// printAnswer(reverser, "expert");
-
-// printAnswer(intReverser, 125);
-
-// printAnswer(fizzy, 50);
-
-// printAnswer(fibby, 10);
-
-// printAnswer(capitalizeString, "this is a test sentence");
-
-// printAnswer(maxCharInString, "this is a test sentence 9182-3 )!@#");
-// printAnswer(maxCharInString, "success");
-// printAnswer(maxCharInString, "abcdefghij");
-// printAnswer(maxValueInCollection, 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
-// printAnswer(
-//   longestWordInCollection,
-//   "test",
-//   "word",
-//   "for",
-//   "here",
-//   "this",
-//   "collection"
-// );
-// printAnswer(longestWordInCollection, "test", "word", "for", "here", "this");
-// printAnswer(sortValues, "desc", 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
-// printAnswer(diceArray, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3, 0);
-// printAnswer(flattenArrays, [[1, [2, 3]], 4, [5, 6], [7], [8, 9]]);
-
-// printAnswer(anagramChecker, "table", "bat");
-// printAnswer(anagramChecker, "cinema", "pilfer");
-// printAnswer(anagramChecker, "terrace", "believe");
-// printAnswer(anagramChecker, "cinema", "iceman");
-// printAnswer(anagramChecker, "cider", "cried");
-// printAnswer(anagramChecker, "link", "kiln");
-
-// printAnswer(letterChanger, "abcdefgzhun");
-printAnswer(countTheVowels, "there");
-printAnswer(countTheVowels, "rhythm");
-printAnswer(countTheVowels, "acerbic");
+// printAnswer(countTheVowels, "there");
+// printAnswer(countTheVowels, "rhythm");
+// printAnswer(countTheVowels, "acerbic");
