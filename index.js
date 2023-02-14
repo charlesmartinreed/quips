@@ -269,14 +269,39 @@ const countTheVowels = (phrase) => {
 // printAnswer(countTheVowels, "there");
 // printAnswer(countTheVowels, "rhythm");
 // printAnswer(countTheVowels, "acerbic");
+const OperationTypes = {
+  Addition: (...values) => values.reduce((pv, cv) => pv + cv),
+  Subtraction: (...values) => values.reduce((pv, cv) => pv - cv),
+  Multiplication: (...values) => values.reduce((pv, cv) => pv * cv),
+};
 
+const bigMath = (operation, ...bigValues) => {
+  return operation(
+    ...bigValues.map((n) => (typeof n === BigInt ? n : BigInt(n)))
+  );
+};
+
+printAnswer(bigMath, OperationTypes.Addition, 1223556, 295333539135835312n);
+printAnswer(bigMath, OperationTypes.Subtraction, 1223556, 295333539135835312n);
+printAnswer(
+  bigMath,
+  OperationTypes.Multiplication,
+  1223556,
+  295333539135835312n
+);
+
+/* 
+=====================
+RANDOM 'COMMON' CODE SCREENING CHALLENGES YOU MIGHT ENCOUNTER
+=====================
+*/
 const multiplicationClosure = (multiplicand) => {
   return (multipler) => {
     return multiplicand * multipler;
   };
 };
 
-const multiplicandValue = multiplicationClosure(6);
+// const multiplicandValue = multiplicationClosure(6);
 // console.log(multiplicandValue(3));
 // console.log(multiplicandValue(8));
 
@@ -291,17 +316,17 @@ const mutabilityTest = (obj, mutFunc) => {
   console.log(mutFunc(obj));
 };
 
-mutabilityTest(immutableObject, (n) => {
-  return n.map(({ person_name, person_age }) => {
-    // if you need to be fancy or whatever
-    return Object.assign(
-      {},
-      { person_name: person_name.toUpperCase(), person_age: (person_age += 1) }
-    );
+// mutabilityTest(immutableObject, (n) => {
+//   return n.map(({ person_name, person_age }) => {
+//     // if you need to be fancy or whatever
+//     return Object.assign(
+//       {},
+//       { person_name: person_name.toUpperCase(), person_age: (person_age += 1) }
+//     );
 
-    //  return {
-    //   person_name: person_name.toLowerCase(),
-    //   person_age: (person_age += 1),
-    // };
-  });
-});
+//     //  return {
+//     //   person_name: person_name.toLowerCase(),
+//     //   person_age: (person_age += 1),
+//     // };
+//   });
+// });
