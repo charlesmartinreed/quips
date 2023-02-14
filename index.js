@@ -266,6 +266,10 @@ const countTheVowels = (phrase) => {
   return phrase.split("").filter((letter) => letter.match(/[aeiou]/gi)).length;
 };
 
+// printAnswer(countTheVowels, "there");
+// printAnswer(countTheVowels, "rhythm");
+// printAnswer(countTheVowels, "acerbic");
+
 const multiplicationClosure = (multiplicand) => {
   return (multipler) => {
     return multiplicand * multipler;
@@ -276,6 +280,28 @@ const multiplicandValue = multiplicationClosure(6);
 // console.log(multiplicandValue(3));
 // console.log(multiplicandValue(8));
 
-// printAnswer(countTheVowels, "there");
-// printAnswer(countTheVowels, "rhythm");
-// printAnswer(countTheVowels, "acerbic");
+const immutableObject = [
+  { person_name: "Charles", person_age: 36 },
+  { person_name: "Dick", person_age: 88 },
+  { person_name: "Zen", person_age: 16 },
+  { person_name: "Byron", person_age: 42 },
+];
+
+const mutabilityTest = (obj, mutFunc) => {
+  console.log(mutFunc(obj));
+};
+
+mutabilityTest(immutableObject, (n) => {
+  return n.map(({ person_name, person_age }) => {
+    // if you need to be fancy or whatever
+    return Object.assign(
+      {},
+      { person_name: person_name.toUpperCase(), person_age: (person_age += 1) }
+    );
+
+    //  return {
+    //   person_name: person_name.toLowerCase(),
+    //   person_age: (person_age += 1),
+    // };
+  });
+});
