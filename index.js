@@ -273,6 +273,7 @@ const OperationTypes = {
   Addition: (...values) => values.reduce((pv, cv) => pv + cv),
   Subtraction: (...values) => values.reduce((pv, cv) => pv - cv),
   Multiplication: (...values) => values.reduce((pv, cv) => pv * cv),
+  Division: (...values) => values.reduce((pv, cv) => pv / cv),
 };
 
 const bigMath = (operation, ...bigValues) => {
@@ -281,20 +282,28 @@ const bigMath = (operation, ...bigValues) => {
   );
 };
 
-printAnswer(bigMath, OperationTypes.Addition, 1223556, 295333539135835312n);
-printAnswer(bigMath, OperationTypes.Subtraction, 1223556, 295333539135835312n);
-printAnswer(
-  bigMath,
-  OperationTypes.Multiplication,
-  1223556,
-  295333539135835312n
-);
+const bigVal1 = 1223556;
+const bigVal2 = 295333539135835312n;
+// printAnswer(bigMath, OperationTypes.Addition, bigVal1, bigVal2);
+// printAnswer(bigMath, OperationTypes.Subtraction, bigVal1, bigVal2);
+// printAnswer(bigMath, OperationTypes.Multiplication, bigVal1, bigVal2);
+// printAnswer(bigMath, OperationTypes.Division, bigVal2, bigVal1);
+
+const inlineValueSwap = (val1, val2) => {
+  return `input ${[val1, val2]} has become output ${([val1, val2] = [
+    val2,
+    val1,
+  ])}`;
+};
+
+// printAnswer(inlineValueSwap, 10, 20);
 
 /* 
 =====================
 RANDOM 'COMMON' CODE SCREENING CHALLENGES YOU MIGHT ENCOUNTER
 =====================
 */
+
 const multiplicationClosure = (multiplicand) => {
   return (multipler) => {
     return multiplicand * multipler;
