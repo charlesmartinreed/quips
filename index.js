@@ -296,7 +296,15 @@ const inlineValueSwap = (val1, val2) => {
   ])}`;
 };
 
-// printAnswer(inlineValueSwap, 10, 20);
+// swap first with last, second with second to last, etc.
+const varLenInlineValueSwap = (...values) => {
+  return values.map((val, index, arr) => {
+    return (val = arr[arr.length - index - 1]);
+  });
+};
+
+printAnswer(varLenInlineValueSwap, 10, 8, 5, 9, 12, 61);
+printAnswer(varLenInlineValueSwap, 319, 59482, 41039, 1285, 91902);
 
 /* 
 =====================
