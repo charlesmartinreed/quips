@@ -303,8 +303,43 @@ const varLenInlineValueSwap = (...values) => {
   });
 };
 
-printAnswer(varLenInlineValueSwap, 10, 8, 5, 9, 12, 61);
-printAnswer(varLenInlineValueSwap, 319, 59482, 41039, 1285, 91902);
+// printAnswer(varLenInlineValueSwap, 10, 8, 5, 9, 12, 61);
+// printAnswer(varLenInlineValueSwap, 319, 59482, 41039, 1285, 91902);
+
+const checkIfNumberIsPrime = (num) => {
+  return num < 1 || num === 1
+    ? false
+    : Array(Math.ceil(Math.sqrt(num)))
+        .fill(Math.ceil(Math.sqrt(num)))
+        .map((val, idx) => val - idx)
+        .filter((n) => n !== 1)
+        .every((val) => num === 2 || num % val !== 0);
+};
+
+const returnAllPrimesUpTo = (num) => {
+  let primes = [];
+  for (let i = 0; i < num; i++) {
+    if (checkIfNumberIsPrime(i) === true) primes = [...primes, i];
+  }
+
+  return primes;
+};
+
+const returnAllPrimesUpToQuip = (num) => {
+  return Array(num)
+    .fill(0)
+    .map((val, index) => val + index)
+    .filter((val) => checkIfNumberIsPrime(val) === true);
+};
+
+printAnswer(returnAllPrimesUpToQuip, 100);
+// printAnswer(returnAllPrimesUpTo, 100);
+
+// printAnswer(checkIfNumberIsPrime, 2);
+// printAnswer(checkIfNumberIsPrime, 3);
+// printAnswer(checkIfNumberIsPrime, 5);
+// printAnswer(checkIfNumberIsPrime, 27);
+// console.log(Array(Math.ceil(Math.sqrt(3))).fill(Math.ceil(Math.sqrt(3))));
 
 /* 
 =====================
