@@ -8,6 +8,18 @@ function printAnswer(fn) {
   console.log("Result of", fn.name, "is", result);
 }
 
+const makeArray = (start = 0, end = 1, interval = 1) => {
+  return Array(Math.ceil((end - start + 1) / interval))
+    .fill(start)
+    .map((n, index) => n + interval * index)
+    .filter((n) => n <= end);
+};
+
+// printAnswer(makeArray, 10, 75, 3);
+// printAnswer(makeArray, 10, 79, 3);
+// printAnswer(makeArray, 1, 25, 1);
+// printAnswer(makeArray, 0, 100, 10);
+
 const removeDuplicateItems = (...items) => {
   // using filter and index of
   return items.filter((item, index) => items.indexOf(item) === index);
@@ -332,7 +344,7 @@ const returnAllPrimesUpToQuip = (num) => {
     .filter((val) => checkIfNumberIsPrime(val) === true);
 };
 
-printAnswer(returnAllPrimesUpToQuip, 100);
+// printAnswer(returnAllPrimesUpToQuip, 100);
 // printAnswer(returnAllPrimesUpTo, 100);
 
 // printAnswer(checkIfNumberIsPrime, 2);
