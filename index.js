@@ -20,6 +20,20 @@ const makeArray = (start = 0, end = 1, interval = 1) => {
 // printAnswer(makeArray, 1, 25, 1);
 // printAnswer(makeArray, 0, 100, 10);
 
+const breakDownDigits = (value) => {
+  let digits = [];
+
+  while (value > 0) {
+    digits = [value % 10, ...digits];
+    while (value === 0) {
+      digits = [0, ...digits];
+    }
+    value = parseInt(value / 10);
+  }
+
+  return digits;
+};
+
 const removeDuplicateItems = (...items) => {
   // using filter and index of
   return items.filter((item, index) => items.indexOf(item) === index);
@@ -328,6 +342,11 @@ const checkIfNumberIsPrime = (num) => {
         .every((val) => num === 2 || num % val !== 0);
 };
 
+// printAnswer(checkIfNumberIsPrime, 2);
+// printAnswer(checkIfNumberIsPrime, 3);
+// printAnswer(checkIfNumberIsPrime, 5);
+// printAnswer(checkIfNumberIsPrime, 27);
+
 const returnAllPrimesUpTo = (num) => {
   let primes = [];
   for (let i = 0; i < num; i++) {
@@ -337,6 +356,8 @@ const returnAllPrimesUpTo = (num) => {
   return primes;
 };
 
+// printAnswer(returnAllPrimesUpTo, 100);
+
 const returnAllPrimesUpToQuip = (num) => {
   return Array(num)
     .fill(0)
@@ -345,13 +366,27 @@ const returnAllPrimesUpToQuip = (num) => {
 };
 
 // printAnswer(returnAllPrimesUpToQuip, 100);
-// printAnswer(returnAllPrimesUpTo, 100);
 
-// printAnswer(checkIfNumberIsPrime, 2);
-// printAnswer(checkIfNumberIsPrime, 3);
-// printAnswer(checkIfNumberIsPrime, 5);
-// printAnswer(checkIfNumberIsPrime, 27);
-// console.log(Array(Math.ceil(Math.sqrt(3))).fill(Math.ceil(Math.sqrt(3))));
+// abcd... = an + bn + cn + dn + ...
+const checkIfArmstrongNumber = (num) => {
+  return num >= 10
+    ? breakDownDigits(num)
+        .map((digit, _, arr) => Math.pow(Number(digit), arr.length))
+        .reduce((pv, cv) => pv + cv) === num
+    : false;
+};
+
+// printAnswer(checkIfArmstrongNumber, 153);
+// printAnswer(checkIfArmstrongNumber, 1634);
+
+const checkForArmstrongNumberInRange = (upperBound) => {
+  let result = makeArray(1, upperBound, 1).filter(
+    (num) => checkIfArmstrongNumber(num) === true
+  );
+  return result;
+};
+
+// printAnswer(checkForArmstrongNumberInRange, 2000);
 
 /* 
 =====================
