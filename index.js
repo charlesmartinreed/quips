@@ -388,6 +388,26 @@ const checkForArmstrongNumberInRange = (upperBound) => {
 
 // printAnswer(checkForArmstrongNumberInRange, 2000);
 
+const sumAllNaturalNumbersUpTo = (limit) => {
+  return makeArray(1, limit, 1).reduce((pv, cv) => pv + cv);
+};
+
+// printAnswer(sumAllNaturalNumbersUpTo, 100);
+// printAnswer(sumAllNaturalNumbersUpTo, 9215);
+
+const checkIfLastDigitsMatch = (...numbers) => {
+  return numbers.length >= 2
+    ? numbers
+        .map((number) => number % 10 === numbers[0] % 10)
+        .every((k) => k === true)
+    : false;
+};
+
+// printAnswer(checkIfLastDigitsMatch, 45);
+// printAnswer(checkIfLastDigitsMatch, 9012, 2);
+// printAnswer(checkIfLastDigitsMatch, 0, 10, 100, 1000);
+// printAnswer(checkIfLastDigitsMatch, 13, 48, 783);
+
 /* 
 =====================
 RANDOM 'COMMON' CODE SCREENING CHALLENGES YOU MIGHT ENCOUNTER
