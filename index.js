@@ -408,6 +408,28 @@ const checkIfLastDigitsMatch = (...numbers) => {
 // printAnswer(checkIfLastDigitsMatch, 0, 10, 100, 1000);
 // printAnswer(checkIfLastDigitsMatch, 13, 48, 783);
 
+const findGreatestCommonDenominatorFor = (...numbers) => {
+  return Math.max(
+    ...numbers
+      .map((num) => {
+        let results = [];
+
+        for (let i = 2; i <= num / 2; i++) {
+          // multiply by two here since it should be more efficient than looping up to the actual number
+          if ((num / 2) % i === 0) results = [i * 2, ...results];
+        }
+        return results;
+      })
+      .reduce((pv, cv) => {
+        return pv.filter((num) => cv.includes(num) === true);
+      })
+  );
+};
+
+printAnswer(findGreatestCommonDenominatorFor, 60, 72, 96);
+// console.log(Math.max([12, 4, 3, 95, 10, 7]));
+
+// console.log(new Set([1, 2, 3, 4], [1, 2, 4]));
 /* 
 =====================
 RANDOM 'COMMON' CODE SCREENING CHALLENGES YOU MIGHT ENCOUNTER
