@@ -426,10 +426,24 @@ const findGreatestCommonDenominatorFor = (...numbers) => {
   );
 };
 
-printAnswer(findGreatestCommonDenominatorFor, 60, 72, 96);
-// console.log(Math.max([12, 4, 3, 95, 10, 7]));
+// printAnswer(findGreatestCommonDenominatorFor, 60, 72, 96);
 
-// console.log(new Set([1, 2, 3, 4], [1, 2, 4]));
+const findLCM = (num1, num2) => {
+  return [num1, num2].reduce((pv, cv) => {
+    let min = Math.min(pv, cv);
+
+    while (true) {
+      if ((min % pv === 0) & (min % cv === 0)) {
+        break;
+      }
+      min++;
+    }
+    return min;
+  });
+};
+
+// printAnswer(findLCM, 6, 8);
+
 /* 
 =====================
 RANDOM 'COMMON' CODE SCREENING CHALLENGES YOU MIGHT ENCOUNTER
