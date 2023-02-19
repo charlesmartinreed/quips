@@ -444,6 +444,13 @@ const findLCM = (num1, num2) => {
 
 // printAnswer(findLCM, 6, 8);
 
+const findFactorsOf = (num) => {
+  return makeArray(1, num, 1).filter((k) => num % k === 0);
+};
+
+printAnswer(findFactorsOf, 12);
+printAnswer(findFactorsOf, 34);
+
 /* 
 =====================
 RANDOM 'COMMON' CODE SCREENING CHALLENGES YOU MIGHT ENCOUNTER
