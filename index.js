@@ -448,14 +448,23 @@ const findFactorsOf = (num) => {
   return makeArray(1, num, 1).filter((k) => num % k === 0);
 };
 
-printAnswer(findFactorsOf, 12);
-printAnswer(findFactorsOf, 34);
+// printAnswer(findFactorsOf, 12);
+// printAnswer(findFactorsOf, 34);
 
 /* 
 =====================
 RANDOM 'COMMON' CODE SCREENING CHALLENGES YOU MIGHT ENCOUNTER
 =====================
 */
+
+const recursiveNaturalNumSum = (num) => {
+  if (num > 0) {
+    num = recursiveNaturalNumSum(num - 1) + num;
+  }
+  return num;
+};
+
+printAnswer(recursiveNaturalNumSum, 10);
 
 const multiplicationClosure = (multiplicand) => {
   return (multipler) => {
