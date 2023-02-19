@@ -450,6 +450,39 @@ const findFactorsOf = (num) => {
 
 // printAnswer(findFactorsOf, 12);
 // printAnswer(findFactorsOf, 34);
+let cardValues = [
+  "Ace",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "Jack",
+  "Queen",
+  "King",
+];
+let cardSuits = ["Spades", "Diamonds", "Club", "Hearts"];
+
+// for reasons I'm not sure I understand
+// it was more performant (on this laptop at least)
+// to return the array from the first map
+// and then join the card and suit in another map func...
+const returnNewCardHand = (handSize) => {
+  return makeArray(1, handSize, 1)
+    .map((i) => {
+      return [
+        cardValues[Math.floor(Math.random() * cardValues.length)],
+        cardSuits[Math.floor(Math.random() * cardSuits.length)],
+      ];
+    })
+    .map((card) => card.join(" of "));
+};
+
+// printAnswer(returnNewCardHand, 5);
 
 /* 
 =====================
@@ -464,7 +497,7 @@ const recursiveNaturalNumSum = (num) => {
   return num;
 };
 
-printAnswer(recursiveNaturalNumSum, 10);
+// printAnswer(recursiveNaturalNumSum, 10);
 
 const multiplicationClosure = (multiplicand) => {
   return (multipler) => {
