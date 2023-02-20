@@ -499,6 +499,35 @@ const returnNewCardHand = (handSize) => {
 
 // printAnswer(returnNewCardHand, 5);
 
+// divide the decimal number by 2
+// tracking the quotient and remainder with each step
+//
+
+// const recursiveFactorialOf = (base) => {
+//   if (base > 1) {
+//     base = base * recursiveFactorialOf(base - 1);
+//   }
+//   return base;
+// };
+
+const convertDecimalToBinary = (deciVal) => {
+};
+
+// printAnswer(convertDecimalToBinary, 29);
+
+const returnASCIICharFor = (chars, returnAsUnicode = false) => {
+  return chars.split("").map((char) => {
+    return returnAsUnicode === false
+      ? char.charCodeAt(0)
+      : char.codePointAt(0).toString(16);
+  });
+};
+
+printAnswer(returnASCIICharFor, "ABCDEFG");
+printAnswer(returnASCIICharFor, "Z");
+printAnswer(returnASCIICharFor, "!@_?^#()");
+printAnswer(returnASCIICharFor, "😁❤️🥲😑🤑🤯🤡", true);
+
 /* 
 =====================
 RANDOM 'COMMON' CODE SCREENING CHALLENGES YOU MIGHT ENCOUNTER
