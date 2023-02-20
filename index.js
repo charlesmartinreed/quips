@@ -20,6 +20,21 @@ const makeArray = (start = 0, end = 1, interval = 1) => {
 // printAnswer(makeArray, 1, 25, 1);
 // printAnswer(makeArray, 0, 100, 10);
 
+const makeFilledArray = (filler) => {
+  return Array(5)
+    .fill(undefined)
+    .map((k) => {
+      return typeof filler === "function" ? filler() : filler;
+    });
+};
+
+const filledArrayTestFunc = () => {
+  return Math.floor(Math.random() * (28 - 15) + 15);
+};
+
+// console.log(makeFilledArray(filledArrayTestFunc));
+// console.log(makeFilledArray(["a", false, 21812, { a: 1, b: 2 }]));
+
 const breakDownDigits = (value) => {
   let digits = [];
 
