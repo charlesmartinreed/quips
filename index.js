@@ -255,13 +255,14 @@ const sortValues = (direction, ...values) => {
     : values.sort((a, b) => b - a);
 };
 
+printAnswer(sortValues, "desc", 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
+
 const sortWordsByLength = (direction, ...words) => {
   return direction === "asc"
     ? words.sort((wordA, wordB) => wordA.charCodeAt(0) - wordB.charCodeAt(0))
     : words.sort((wordA, wordB) => wordB.charCodeAt(0) - wordA.charCodeAt(0));
 };
 
-printAnswer(sortValues, "desc", 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
 printAnswer(
   sortWordsByLength,
   "asc",
@@ -542,6 +543,21 @@ const returnASCIICharFor = (chars, returnAsUnicode = false) => {
 // printAnswer(returnASCIICharFor, "Z");
 // printAnswer(returnASCIICharFor, "!@_?^#()");
 // printAnswer(returnASCIICharFor, "😁❤️🥲😑🤑🤯🤡", true);
+
+const replacer = (sentence, deleteWord, replacement) => {
+  return sentence.replaceAll(
+    new RegExp(String.raw`^${deleteWord}`, "gi"),
+    (match) => {
+      return match.charAt(0) === match.charAt(0).toUpperCase()
+        ? replacement.slice(0, 1).toUpperCase() + replacement.slice(1)
+        : replacement;
+    }
+  );
+};
+
+const testGraph =
+  "My favorite color is definitely red. Red goes with everything, unlike that ugly teal color. If someone doesn't like red, they should be ignored. Red is king.";
+printAnswer(replacer, testGraph, "red", "blue");
 
 /* 
 =====================
