@@ -255,7 +255,23 @@ const sortValues = (direction, ...values) => {
     : values.sort((a, b) => b - a);
 };
 
-// printAnswer(sortValues, "desc", 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
+const sortWordsByLength = (direction, ...words) => {
+  return direction === "asc"
+    ? words.sort((wordA, wordB) => wordA.charCodeAt(0) - wordB.charCodeAt(0))
+    : words.sort((wordA, wordB) => wordB.charCodeAt(0) - wordA.charCodeAt(0));
+};
+
+printAnswer(sortValues, "desc", 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
+printAnswer(
+  sortWordsByLength,
+  "asc",
+  "pineapple",
+  "tomato",
+  "apples",
+  "oranges",
+  "zucchini",
+  "bananas"
+);
 
 const diceArray = (arr, sliceSize, startIndex) => {
   return Array(Math.ceil(arr.length / sliceSize))
@@ -510,8 +526,7 @@ const returnNewCardHand = (handSize) => {
 //   return base;
 // };
 
-const convertDecimalToBinary = (deciVal) => {
-};
+const convertDecimalToBinary = (deciVal) => {};
 
 // printAnswer(convertDecimalToBinary, 29);
 
@@ -523,10 +538,10 @@ const returnASCIICharFor = (chars, returnAsUnicode = false) => {
   });
 };
 
-printAnswer(returnASCIICharFor, "ABCDEFG");
-printAnswer(returnASCIICharFor, "Z");
-printAnswer(returnASCIICharFor, "!@_?^#()");
-printAnswer(returnASCIICharFor, "😁❤️🥲😑🤑🤯🤡", true);
+// printAnswer(returnASCIICharFor, "ABCDEFG");
+// printAnswer(returnASCIICharFor, "Z");
+// printAnswer(returnASCIICharFor, "!@_?^#()");
+// printAnswer(returnASCIICharFor, "😁❤️🥲😑🤑🤯🤡", true);
 
 /* 
 =====================
