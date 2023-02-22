@@ -344,17 +344,17 @@ const countOccurencesHash = (letter, fullPhrase) => {
   return letterMap[letter];
 };
 
-printAnswer(
-  countOccurencesOf,
-  "o",
-  "how many times does the letter occur in this sentence?"
-);
+// printAnswer(
+//   countOccurencesOf,
+//   "o",
+//   "how many times does the letter occur in this sentence?"
+// );
 
-printAnswer(
-  countOccurencesHash,
-  "o",
-  "how many times does the letter occur in this sentence?"
-);
+// printAnswer(
+//   countOccurencesHash,
+//   "o",
+//   "how many times does the letter occur in this sentence?"
+// );
 
 // printAnswer(countTheVowels, "there");
 // printAnswer(countTheVowels, "rhythm");
@@ -641,3 +641,21 @@ const mutabilityTest = (obj, mutFunc) => {
 //     // };
 //   });
 // });
+
+let student = {
+  name: "Jimmy Dean",
+  age: 16,
+  gpa: 3.2,
+  dummyData: null,
+  greet: function () {
+    console.log(`Hello! My name is ${this.name}`);
+  },
+};
+
+const deletePropFromObjAndReturnMutated = (obj, propToDelete) => {
+  if (obj.hasOwnProperty(propToDelete)) delete obj[propToDelete];
+  return obj;
+};
+
+// student.greet();
+// printAnswer(deletePropFromObjAndReturnMutated, student, "dummyData");
