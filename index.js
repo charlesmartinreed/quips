@@ -255,7 +255,7 @@ const sortValues = (direction, ...values) => {
     : values.sort((a, b) => b - a);
 };
 
-printAnswer(sortValues, "desc", 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
+// printAnswer(sortValues, "desc", 1, 19, 36, 105, 11, 25, 20239, 64, 13, 2, 0);
 
 const sortWordsByLength = (direction, ...words) => {
   return direction === "asc"
@@ -263,16 +263,16 @@ const sortWordsByLength = (direction, ...words) => {
     : words.sort((wordA, wordB) => wordB.charCodeAt(0) - wordA.charCodeAt(0));
 };
 
-printAnswer(
-  sortWordsByLength,
-  "asc",
-  "pineapple",
-  "tomato",
-  "apples",
-  "oranges",
-  "zucchini",
-  "bananas"
-);
+// printAnswer(
+//   sortWordsByLength,
+//   "asc",
+//   "pineapple",
+//   "tomato",
+//   "apples",
+//   "oranges",
+//   "zucchini",
+//   "bananas"
+// );
 
 const diceArray = (arr, sliceSize, startIndex) => {
   return Array(Math.ceil(arr.length / sliceSize))
@@ -323,6 +323,38 @@ const letterChanger = (phrase) => {
 const countTheVowels = (phrase) => {
   return phrase.split("").filter((letter) => letter.match(/[aeiou]/gi)).length;
 };
+
+const countOccurencesOf = (letter, fullPhrase) => {
+  return [...fullPhrase.matchAll(new RegExp(String.raw`${letter}`, "gi"))]
+    .length;
+};
+
+// of course you could also implement a hashMap, if you really wanted to, but... eh
+const countOccurencesHash = (letter, fullPhrase) => {
+  let letterMap = [];
+
+  for (const char of fullPhrase) {
+    if (letterMap[char]) {
+      letterMap[char]++;
+    } else {
+      letterMap[char] = 1;
+    }
+  }
+
+  return letterMap[letter];
+};
+
+printAnswer(
+  countOccurencesOf,
+  "o",
+  "how many times does the letter occur in this sentence?"
+);
+
+printAnswer(
+  countOccurencesHash,
+  "o",
+  "how many times does the letter occur in this sentence?"
+);
 
 // printAnswer(countTheVowels, "there");
 // printAnswer(countTheVowels, "rhythm");
@@ -557,7 +589,7 @@ const replacer = (sentence, deleteWord, replacement) => {
 
 const testGraph =
   "My favorite color is definitely red. Red goes with everything, unlike that ugly teal color. If someone doesn't like red, they should be ignored. Red is king.";
-printAnswer(replacer, testGraph, "red", "blue");
+// printAnswer(replacer, testGraph, "red", "blue");
 
 /* 
 =====================
