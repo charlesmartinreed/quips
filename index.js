@@ -329,11 +329,22 @@ const countOccurencesOf = (letter, fullPhrase) => {
     .length;
 };
 
-const checkString = (beginLetter, endLetter, word) => {};
+const checkString = (beginLetter, endLetter, word) => {
+  // obviously .startsWith and .endsWith exist as well
+  // return (
+  //   word.startsWith(beginLetter.toLowerCase()) &&
+  //   word.endsWith(endLetter.toLowerCase())
+  // );
 
-printAnswer(checkString, "a", "A", "Amygdala");
-printAnswer(checkString, "a", "A", "arson");
+  return new RegExp(String.raw`^${beginLetter}..{1,}${endLetter}$`, "gi").test(
+    word
+  );
+};
+
+printAnswer(checkString, "A", "a", "amygdala");
+printAnswer(checkString, "a", "t", "arson");
 printAnswer(checkString, "a", "A", "billionaire");
+printAnswer(checkString, "r", "r", "racecar");
 
 // of course you could also implement a hashMap, if you really wanted to, but... eh
 const countOccurencesHash = (letter, fullPhrase) => {
@@ -664,8 +675,12 @@ const deletePropFromObjAndReturnMutated = (obj, propToDelete) => {
 };
 
 const checkIfKeyExists = (obj, key) => {
- return obj.hasOwnProperty(key);
-}
+  return obj.hasOwnProperty(key);
+};
+
+// printAnswer(checkIfKeyExists, student, "greet");
+// printAnswer(checkIfKeyExists, student, "age");
+// printAnswer(checkIfKeyExists, student, "awards");
 
 // student.greet();
 // printAnswer(deletePropFromObjAndReturnMutated, student, "dummyData");
