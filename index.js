@@ -329,6 +329,12 @@ const countOccurencesOf = (letter, fullPhrase) => {
     .length;
 };
 
+const checkString = (beginLetter, endLetter, word) => {};
+
+printAnswer(checkString, "a", "A", "Amygdala");
+printAnswer(checkString, "a", "A", "arson");
+printAnswer(checkString, "a", "A", "billionaire");
+
 // of course you could also implement a hashMap, if you really wanted to, but... eh
 const countOccurencesHash = (letter, fullPhrase) => {
   let letterMap = [];
@@ -656,6 +662,10 @@ const deletePropFromObjAndReturnMutated = (obj, propToDelete) => {
   if (obj.hasOwnProperty(propToDelete)) delete obj[propToDelete];
   return obj;
 };
+
+const checkIfKeyExists = (obj, key) => {
+ return obj.hasOwnProperty(key);
+}
 
 // student.greet();
 // printAnswer(deletePropFromObjAndReturnMutated, student, "dummyData");
