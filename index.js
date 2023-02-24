@@ -341,10 +341,26 @@ const checkString = (beginLetter, endLetter, word) => {
   );
 };
 
-printAnswer(checkString, "A", "a", "amygdala");
-printAnswer(checkString, "a", "t", "arson");
-printAnswer(checkString, "a", "A", "billionaire");
-printAnswer(checkString, "r", "r", "racecar");
+// printAnswer(checkString, "A", "a", "amygdala");
+// printAnswer(checkString, "a", "t", "arson");
+// printAnswer(checkString, "a", "A", "billionaire");
+// printAnswer(checkString, "r", "r", "racecar");
+
+let mazdaObj = {
+  model_name: "RX-8",
+  model_year: "2002",
+  mileage: "140518",
+  color: "red",
+};
+
+const copyObjByRef = (objToCopy) => {
+  return { ...objToCopy };
+  return Object.assign({}, objToCopy);
+};
+
+let mazdaObj_copy = copyObjByRef(mazdaObj);
+mazdaObj_copy.title_status = "clean";
+console.log(mazdaObj, mazdaObj_copy);
 
 // of course you could also implement a hashMap, if you really wanted to, but... eh
 const countOccurencesHash = (letter, fullPhrase) => {
