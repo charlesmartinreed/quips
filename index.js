@@ -360,7 +360,7 @@ const copyObjByRef = (objToCopy) => {
 
 let mazdaObj_copy = copyObjByRef(mazdaObj);
 mazdaObj_copy.title_status = "clean";
-console.log(mazdaObj, mazdaObj_copy);
+// console.log(mazdaObj, mazdaObj_copy);
 
 // of course you could also implement a hashMap, if you really wanted to, but... eh
 const countOccurencesHash = (letter, fullPhrase) => {
@@ -681,14 +681,18 @@ let student = {
   gpa: 3.2,
   dummyData: null,
   greet: function () {
-    console.log(`Hello! My name is ${this.name}`);
+    return `Hello! My name is ${this.name}`;
   },
 };
+
+// student.greet();
 
 const deletePropFromObjAndReturnMutated = (obj, propToDelete) => {
   if (obj.hasOwnProperty(propToDelete)) delete obj[propToDelete];
   return obj;
 };
+
+// printAnswer(deletePropFromObjAndReturnMutated, student, "dummyData");
 
 const checkIfKeyExists = (obj, key) => {
   return obj.hasOwnProperty(key);
@@ -698,5 +702,14 @@ const checkIfKeyExists = (obj, key) => {
 // printAnswer(checkIfKeyExists, student, "age");
 // printAnswer(checkIfKeyExists, student, "awards");
 
-// student.greet();
-// printAnswer(deletePropFromObjAndReturnMutated, student, "dummyData");
+const returnObjectValuesAndProps = (obj) => {
+  let values = [];
+  for (const [key, value] of Object.entries(obj)) {
+    // if the value is an function, get the returned value
+    values = [...values, [key, typeof value == "function" ? value() : value]];
+  }
+
+  return values;
+};
+
+printAnswer(returnObjectValuesAndProps, student);
