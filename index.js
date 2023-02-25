@@ -685,8 +685,6 @@ let student = {
   },
 };
 
-// student.greet();
-
 const deletePropFromObjAndReturnMutated = (obj, propToDelete) => {
   if (obj.hasOwnProperty(propToDelete)) delete obj[propToDelete];
   return obj;
@@ -706,7 +704,10 @@ const returnObjectValuesAndProps = (obj) => {
   let values = [];
   for (const [key, value] of Object.entries(obj)) {
     // if the value is an function, get the returned value
-    values = [...values, [key, typeof value == "function" ? value() : value]];
+    values = [
+      ...values,
+      [key, typeof value == "function" ? obj[key]() : value],
+    ];
   }
 
   return values;
