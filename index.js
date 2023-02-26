@@ -685,13 +685,6 @@ let student = {
   },
 };
 
-const deletePropFromObjAndReturnMutated = (obj, propToDelete) => {
-  if (obj.hasOwnProperty(propToDelete)) delete obj[propToDelete];
-  return obj;
-};
-
-// printAnswer(deletePropFromObjAndReturnMutated, student, "dummyData");
-
 const checkIfKeyExists = (obj, key) => {
   return obj.hasOwnProperty(key);
 };
@@ -699,6 +692,13 @@ const checkIfKeyExists = (obj, key) => {
 // printAnswer(checkIfKeyExists, student, "greet");
 // printAnswer(checkIfKeyExists, student, "age");
 // printAnswer(checkIfKeyExists, student, "awards");
+
+const deletePropFromObjAndReturnMutated = (obj, propToDelete) => {
+  if (obj.hasOwnProperty(propToDelete)) delete obj[propToDelete];
+  return obj;
+};
+
+// printAnswer(deletePropFromObjAndReturnMutated, student, "dummyData");
 
 const returnObjectValuesAndProps = (obj) => {
   let values = [];
@@ -713,4 +713,13 @@ const returnObjectValuesAndProps = (obj) => {
   return values;
 };
 
-printAnswer(returnObjectValuesAndProps, student);
+// printAnswer(returnObjectValuesAndProps, student);
+
+const mergeObjAndProps = (originalObj, objOfProps) => {
+  return { ...originalObj, ...objOfProps };
+  return Object.assign(originalObj, objOfProps);
+};
+
+printAnswer(mergeObjAndProps, student, {
+  extracurriculars: ["rugby", "debate club", "student council"],
+});
