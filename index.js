@@ -715,11 +715,41 @@ const returnObjectValuesAndProps = (obj) => {
 
 // printAnswer(returnObjectValuesAndProps, student);
 
-const mergeObjAndProps = (originalObj, objOfProps) => {
+const mergeObjAndProps = (
+  originalObj,
+  objOfProps,
+  preserveOriginalObjProValuesOnMerge = false
+) => {
+  if (preserveOriginalObjProValuesOnMerge) {
+    let sameTraits = {};
+    let diffTraits = {};
+
+    for (const [key, value] of Object.entries(originalObj)) {
+      if (objOfProps.hasOwnProperty(key)) {
+        console.log("same traits found", "key:", key, "value:", value);
+        sameTraits[key] = value;
+      } else {
+        diffTraits[key] = value;
+      }
+    }
+
+    for (const [key, value] of Object.entries(objOfProps)) {
+      if (!originalObj.hasOwnProperty(key)) diffTraits[key] = value;
+    }
+
+    return { ...sameTraits, ...diffTraits };
+  }
+
   return { ...originalObj, ...objOfProps };
   return Object.assign(originalObj, objOfProps);
 };
 
-printAnswer(mergeObjAndProps, student, {
-  extracurriculars: ["rugby", "debate club", "student council"],
-});
+printAnswer(
+  mergeObjAndProps,
+  student,
+  {
+    name: "Johnny Black",
+    extracurriculars: ["rugby", "debate club", "student council"],
+  },
+  true
+);
