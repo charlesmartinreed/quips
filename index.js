@@ -700,6 +700,33 @@ const deletePropFromObjAndReturnMutated = (obj, propToDelete) => {
 
 // printAnswer(deletePropFromObjAndReturnMutated, student, "dummyData");
 
+const addPropToObjAndReturnMutated = (
+  obj,
+  keyValuePairs,
+  preserveOriginalObjProValuesOnMerge = true
+) => {
+  for (const [key, value] of Object.entries(keyValuePairs)) {
+    if (preserveOriginalObjProValuesOnMerge && obj[key]) {
+      continue;
+    }
+    obj[key] = value;
+  }
+
+  return obj;
+};
+
+printAnswer(
+  addPropToObjAndReturnMutated,
+  student,
+  {
+    name: "Bruce Wayne",
+    allergies: ["penicillin", "aspirin"],
+    testDataA: "value1",
+    testDataB: "value2",
+  },
+  false
+);
+
 const returnObjectValuesAndProps = (obj) => {
   let values = [];
   for (const [key, value] of Object.entries(obj)) {
@@ -744,12 +771,12 @@ const mergeObjAndProps = (
   return Object.assign(originalObj, objOfProps);
 };
 
-printAnswer(
-  mergeObjAndProps,
-  student,
-  {
-    name: "Johnny Black",
-    extracurriculars: ["rugby", "debate club", "student council"],
-  },
-  true
-);
+// printAnswer(
+//   mergeObjAndProps,
+//   student,
+//   {
+//     name: "Johnny Black",
+//     extracurriculars: ["rugby", "debate club", "student council"],
+//   },
+//   true
+// );
