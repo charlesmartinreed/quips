@@ -624,6 +624,24 @@ const testGraph =
   "My favorite color is definitely red. Red goes with everything, unlike that ugly teal color. If someone doesn't like red, they should be ignored. Red is king.";
 // printAnswer(replacer, testGraph, "red", "blue");
 
+const returnCapitalizedMultiLineStr = (str) => {
+  // extra code here
+  // but checking to avoid performing a mutation unnecessarily
+  return str
+    .split(" ")
+    .map((word) =>
+      word.charAt(0) === word.charAt(0).toUpperCase()
+        ? word
+        : word.charAt().toUpperCase() + word.slice(1)
+    )
+    .join("\n");
+};
+
+printAnswer(
+  returnCapitalizedMultiLineStr,
+  "this is a test sentence that will be split into multiline madness."
+);
+
 /* 
 =====================
 RANDOM 'COMMON' CODE SCREENING CHALLENGES YOU MIGHT ENCOUNTER
@@ -715,17 +733,17 @@ const addPropToObjAndReturnMutated = (
   return obj;
 };
 
-printAnswer(
-  addPropToObjAndReturnMutated,
-  student,
-  {
-    name: "Bruce Wayne",
-    allergies: ["penicillin", "aspirin"],
-    testDataA: "value1",
-    testDataB: "value2",
-  },
-  false
-);
+// printAnswer(
+//   addPropToObjAndReturnMutated,
+//   student,
+//   {
+//     name: "Bruce Wayne",
+//     allergies: ["penicillin", "aspirin"],
+//     testDataA: "value1",
+//     testDataB: "value2",
+//   },
+//   false
+// );
 
 const returnObjectValuesAndProps = (obj) => {
   let values = [];
