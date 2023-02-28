@@ -646,14 +646,36 @@ const returnCapitalizedMultiLineStr = (str) => {
 // beyond that, there's no default style
 // so the currency would have to be to manually mapped to a locale :(
 
-const formatAsCurrency = (val, userLocation) => {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  }).format(val);
+const countryToCurrencyMap = {
+  united_states: ["en-US", "USD"],
+  japan: ["ja-JP", "JPY"],
+  england: ["en-GB", "GBP"],
+  china: ["zh-CN", "CNY"],
+  germany: ["en-DE", "EUR"],
 };
 
-printAnswer(formatAsCurrency, "United States", 12345.6789);
+const formatAsCurrency = (val, userLocation) => {
+  let location =
+    countryToCurrencyMap[userLocation.toLowerCase().replace(" ", "_")];
+
+  if (!location) {
+    return `Sorry, but currency conversion is currently unavailable for ${userLocation}.`;
+  } else {
+    let [countryCode, currencyCode] = location;
+
+    return new Intl.NumberFormat(countryCode, {
+      style: "currency",
+      currency: currencyCode,
+    }).format(val);
+  }
+};
+
+printAnswer(formatAsCurrency, 12345.6789, "United States");
+printAnswer(formatAsCurrency, 12345.6789, "England");
+printAnswer(formatAsCurrency, 12345.6789, "China");
+printAnswer(formatAsCurrency, 12345.6789, "Germany");
+printAnswer(formatAsCurrency, 12345.6789, "Japan");
+printAnswer(formatAsCurrency, 12345.6789, "Brazil");
 
 /* 
 =====================
