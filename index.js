@@ -637,10 +637,23 @@ const returnCapitalizedMultiLineStr = (str) => {
     .join("\n");
 };
 
-printAnswer(
-  returnCapitalizedMultiLineStr,
-  "this is a test sentence that will be split into multiline madness."
-);
+// printAnswer(
+//   returnCapitalizedMultiLineStr,
+//   "this is a test sentence that will be split into multiline madness."
+// );
+
+// this won't work on the server side, as there's no navigator here
+// beyond that, there's no default style
+// so the currency would have to be to manually mapped to a locale :(
+
+const formatAsCurrency = (val, userLocation) => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(val);
+};
+
+printAnswer(formatAsCurrency, "United States", 12345.6789);
 
 /* 
 =====================
