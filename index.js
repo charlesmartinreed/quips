@@ -20,20 +20,41 @@ const makeArray = (start = 0, end = 1, interval = 1) => {
 // printAnswer(makeArray, 1, 25, 1);
 // printAnswer(makeArray, 0, 100, 10);
 
-const makeFilledArray = (filler) => {
-  return Array(5)
+const makeFilledArray = (arrLen, filler = null) => {
+  return Array(arrLen)
     .fill(undefined)
     .map((k) => {
       return typeof filler === "function" ? filler() : filler;
     });
 };
 
+// console.log(makeFilledArray(6, filledArrayTestFunc));
+// console.log(makeFilledArray(["a", false, 21812, { a: 1, b: 2 }]));
+
 const filledArrayTestFunc = () => {
   return Math.floor(Math.random() * (28 - 15) + 15);
 };
 
-// console.log(makeFilledArray(filledArrayTestFunc));
-// console.log(makeFilledArray(["a", false, 21812, { a: 1, b: 2 }]));
+// 0-9 charCodes are 48-57
+// A-Z charCodes are 65-90
+// a-z charCodes are 97-122
+// this example leverages my helper methods,
+// but there's a less bespoke method to be found below as well
+const generateRandomStr = (strLen) => {
+  let charSets = [
+    [48, 57],
+    [65, 90],
+    [97, 122],
+  ];
+
+  return makeFilledArray(strLen, () => {
+    let [min, max] = charSets[Math.floor(Math.random() * charSets.length)];
+
+    return String.fromCharCode(Math.random() * (max - min) + min);
+  }).join("");
+};
+
+printAnswer(generateRandomStr, 8);
 
 const breakDownDigits = (value) => {
   let digits = [];
@@ -670,12 +691,12 @@ const formatAsCurrency = (val, userLocation) => {
   }
 };
 
-printAnswer(formatAsCurrency, 12345.6789, "United States");
-printAnswer(formatAsCurrency, 12345.6789, "England");
-printAnswer(formatAsCurrency, 12345.6789, "China");
-printAnswer(formatAsCurrency, 12345.6789, "Germany");
-printAnswer(formatAsCurrency, 12345.6789, "Japan");
-printAnswer(formatAsCurrency, 12345.6789, "Brazil");
+// printAnswer(formatAsCurrency, 12345.6789, "United States");
+// printAnswer(formatAsCurrency, 12345.6789, "England");
+// printAnswer(formatAsCurrency, 12345.6789, "China");
+// printAnswer(formatAsCurrency, 12345.6789, "Germany");
+// printAnswer(formatAsCurrency, 12345.6789, "Japan");
+// printAnswer(formatAsCurrency, 12345.6789, "Brazil");
 
 /* 
 =====================
