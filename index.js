@@ -54,7 +54,31 @@ const generateRandomStr = (strLen) => {
   }).join("");
 };
 
-printAnswer(generateRandomStr, 8);
+// printAnswer(generateRandomStr, 8);
+
+const bigBrainRandomStrGenerator = (arrLen) => {
+  // stolen from programiz.com
+  // base36 encoding converts binary to ASCII
+  // encapsulating 0-9 and A-Z, using a radix of 36
+  // then we simply slice the string, starting at the characters
+  return Math.random()
+    .toString(36)
+    .substring(2, 2 + arrLen);
+};
+
+// printAnswer(bigBrainRandomStrGenerator, 4);
+
+const midBrainRandomStrGenerator = (len) => {
+  let str = "";
+
+  for (let i = 0; i < len; i++) {
+    str += Math.random().toString(36).substring(2, 3);
+  }
+
+  return str;
+};
+
+printAnswer(midBrainRandomStrGenerator, 5);
 
 const breakDownDigits = (value) => {
   let digits = [];
