@@ -78,7 +78,7 @@ const midBrainRandomStrGenerator = (len) => {
   return str;
 };
 
-printAnswer(midBrainRandomStrGenerator, 5);
+// printAnswer(midBrainRandomStrGenerator, 5);
 
 const breakDownDigits = (value) => {
   let digits = [];
@@ -390,6 +390,34 @@ const checkString = (beginLetter, endLetter, word) => {
 // printAnswer(checkString, "a", "t", "arson");
 // printAnswer(checkString, "a", "A", "billionaire");
 // printAnswer(checkString, "r", "r", "racecar");
+
+const checkStringUsingStartsWith = (phrase, segement) => {
+  return new RegExp(String.raw`^${segement}`, "gi").test(phrase, "gi");
+  return phrase.toLowerCase().startsWith(segement.toLowerCase(), 0);
+};
+
+printAnswer(checkStringUsingStartsWith, "hello world", "HE");
+printAnswer(checkStringUsingStartsWith, "hello world", "abcde");
+
+// we can also check whether or not the segment
+// appears at any point in the phrase
+const checkIfSegmentAppearsInString = (phrase, segement) => {
+  for (let i = 0; i < phrase.length; i++) {
+    let segToCheck = phrase.slice(i, i + segement.length);
+    if (segToCheck === segement) {
+      return true;
+    } else {
+      continue;
+    }
+  }
+  return false;
+};
+
+"test".lastIndexOf();
+
+// printAnswer(checkIfSegmentAppearsInString, "exsanguination", "sang");
+// printAnswer(checkIfSegmentAppearsInString, "tendentious", "tender");
+// printAnswer(checkIfSegmentAppearsInString, "tendentious", "dent");
 
 let mazdaObj = {
   model_name: "RX-8",
