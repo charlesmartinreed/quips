@@ -396,8 +396,8 @@ const checkStringUsingStartsWith = (phrase, segement) => {
   return phrase.toLowerCase().startsWith(segement.toLowerCase(), 0);
 };
 
-printAnswer(checkStringUsingStartsWith, "hello world", "HE");
-printAnswer(checkStringUsingStartsWith, "hello world", "abcde");
+// printAnswer(checkStringUsingStartsWith, "hello world", "HE");
+// printAnswer(checkStringUsingStartsWith, "hello world", "abcde");
 
 // we can also check whether or not the segment
 // appears at any point in the phrase
@@ -418,6 +418,19 @@ const checkIfSegmentAppearsInString = (phrase, segement) => {
 // printAnswer(checkIfSegmentAppearsInString, "exsanguination", "sang");
 // printAnswer(checkIfSegmentAppearsInString, "tendentious", "tender");
 // printAnswer(checkIfSegmentAppearsInString, "tendentious", "dent");
+
+const trimString = (str) => {
+  // \B matches if the pattern isn't at the beginning or end of the word
+  // \s matches any whitespace character
+  return str.replace(/\B[\s] | [\s]\B/gi, "");
+
+  // see the problem with trim? it fails
+  // if there's a punctuation character following a long series of spaces
+  // this probably wouldn't really happen in the wild, but!
+  return str.trim();
+};
+
+printAnswer(trimString, "      Hello World    !");
 
 let mazdaObj = {
   model_name: "RX-8",
