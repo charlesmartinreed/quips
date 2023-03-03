@@ -369,6 +369,10 @@ const countTheVowels = (phrase) => {
   return phrase.split("").filter((letter) => letter.match(/[aeiou]/gi)).length;
 };
 
+// printAnswer(countTheVowels, "there");
+// printAnswer(countTheVowels, "rhythm");
+// printAnswer(countTheVowels, "acerbic");
+
 const countOccurencesOf = (letter, fullPhrase) => {
   return [...fullPhrase.matchAll(new RegExp(String.raw`${letter}`, "gi"))]
     .length;
@@ -430,7 +434,7 @@ const trimString = (str) => {
   return str.trim();
 };
 
-printAnswer(trimString, "      Hello World    !");
+// printAnswer(trimString, "      Hello World    !");
 
 let mazdaObj = {
   model_name: "RX-8",
@@ -443,6 +447,23 @@ const copyObjByRef = (objToCopy) => {
   return { ...objToCopy };
   return Object.assign({}, objToCopy);
 };
+
+const printObjectAsAString = (obj) => {
+  return JSON.stringify(obj);
+};
+
+// printAnswer(printObjectAsAString, mazdaObj);
+// console.log(typeof printObjectAsAString(mazdaObj));
+
+const printObjectAsFormattedString = (obj) => {
+  let formattedStr = "";
+  for (const [key, value] of Object.entries(obj)) {
+    formattedStr += `\nThe KEY ${key} contains the VALUE ${value}.`;
+  }
+  return formattedStr;
+};
+
+printAnswer(printObjectAsFormattedString, mazdaObj);
 
 let mazdaObj_copy = copyObjByRef(mazdaObj);
 mazdaObj_copy.title_status = "clean";
@@ -475,9 +496,6 @@ const countOccurencesHash = (letter, fullPhrase) => {
 //   "how many times does the letter occur in this sentence?"
 // );
 
-// printAnswer(countTheVowels, "there");
-// printAnswer(countTheVowels, "rhythm");
-// printAnswer(countTheVowels, "acerbic");
 const OperationTypes = {
   Addition: (...values) => values.reduce((pv, cv) => pv + cv),
   Subtraction: (...values) => values.reduce((pv, cv) => pv - cv),
