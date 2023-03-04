@@ -446,8 +446,8 @@ const checkIfStringsMatch = (str1, str2) => {
   return new RegExp(str1, "gi").test(str2);
 };
 
-printAnswer(checkIfStringsMatch, "hot take", "hOt TAkE");
-printAnswer(checkIfStringsMatch, "papaya", "pineapple");
+// printAnswer(checkIfStringsMatch, "hot take", "hOt TAkE");
+// printAnswer(checkIfStringsMatch, "papaya", "pineapple");
 
 let mazdaObj = {
   model_name: "RX-8",
@@ -476,7 +476,7 @@ const printObjectAsFormattedString = (obj) => {
   return formattedStr;
 };
 
-printAnswer(printObjectAsFormattedString, mazdaObj);
+// printAnswer(printObjectAsFormattedString, mazdaObj);
 
 let mazdaObj_copy = copyObjByRef(mazdaObj);
 mazdaObj_copy.title_status = "clean";
@@ -740,6 +740,15 @@ const replacer = (sentence, deleteWord, replacement) => {
 const testGraph =
   "My favorite color is definitely red. Red goes with everything, unlike that ugly teal color. If someone doesn't like red, they should be ignored. Red is king.";
 // printAnswer(replacer, testGraph, "red", "blue");
+
+const simpleLetterReplacer = (phrase, letterToDelete, replacementLetter) => {
+  return phrase
+    .split(/\s+|\W$./)
+    .map((word) => word.replace(letterToDelete, replacementLetter))
+    .join(" ");
+};
+
+printAnswer(simpleLetterReplacer, testGraph, "i", "$");
 
 const returnCapitalizedMultiLineStr = (str) => {
   // extra code here
