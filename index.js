@@ -417,8 +417,6 @@ const checkIfSegmentAppearsInString = (phrase, segement) => {
   return false;
 };
 
-"test".lastIndexOf();
-
 // printAnswer(checkIfSegmentAppearsInString, "exsanguination", "sang");
 // printAnswer(checkIfSegmentAppearsInString, "tendentious", "tender");
 // printAnswer(checkIfSegmentAppearsInString, "tendentious", "dent");
@@ -435,6 +433,21 @@ const trimString = (str) => {
 };
 
 // printAnswer(trimString, "      Hello World    !");
+
+const checkIfStringsMatch = (str1, str2) => {
+  // localeCompare returns a number indicating
+  // if the reference string comes before (return -1), after (1) or is equal (0)
+  // to given string in sort order
+  // setting sensitivity also ignores case, but
+  // it's typically useful for comparing, say ä with a
+  // return str1.localeCompare(str2, "en", { sensitivity: "base" }) === 0
+  //   ? "true"
+  //   : "false";
+  return new RegExp(str1, "gi").test(str2);
+};
+
+printAnswer(checkIfStringsMatch, "hot take", "hOt TAkE");
+printAnswer(checkIfStringsMatch, "papaya", "pineapple");
 
 let mazdaObj = {
   model_name: "RX-8",
