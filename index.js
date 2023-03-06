@@ -737,8 +737,10 @@ const replacer = (sentence, deleteWord, replacement) => {
   );
 };
 
-const testGraph =
-  "My favorite color is definitely red. Red goes with everything, unlike that ugly teal color. If someone doesn't like red, they should be ignored. Red is king.";
+const testGraph = `My favorite color is definitely red.
+Red goes with everything, unlike that ugly teal color.
+If someone doesn't like red, they should be ignored.
+Red is king.`;
 // printAnswer(replacer, testGraph, "red", "blue");
 
 const simpleLetterReplacer = (phrase, letterToDelete, replacementLetter) => {
@@ -748,7 +750,14 @@ const simpleLetterReplacer = (phrase, letterToDelete, replacementLetter) => {
     .join(" ");
 };
 
-printAnswer(simpleLetterReplacer, testGraph, "i", "$");
+// printAnswer(simpleLetterReplacer, testGraph, "i", "$");
+
+const returnParagraphWithBRTags = (paragraph) => {
+  return paragraph.split(/\n+/).join("<br>");
+  return testGraph.replace(new RegExp(/(\r|\r\n|\n)/, "g"), "<br>");
+};
+
+printAnswer(returnParagraphWithBRTags, testGraph);
 
 const returnCapitalizedMultiLineStr = (str) => {
   // extra code here
