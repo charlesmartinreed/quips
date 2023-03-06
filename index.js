@@ -449,6 +449,22 @@ const checkIfStringsMatch = (str1, str2) => {
 // printAnswer(checkIfStringsMatch, "hot take", "hOt TAkE");
 // printAnswer(checkIfStringsMatch, "papaya", "pineapple");
 
+const checkIsLeapYear = (yearToCheck) => {
+  // a respectable programming language wouldn't implicitly convert strings like this
+  // but alas... this is JavaScript
+  return (
+    yearToCheck % 400 == 0 || (yearToCheck % 4 == 0 && yearToCheck % 100 != 0)
+  );
+};
+
+// printAnswer(checkIsLeapYear, 2000);
+// printAnswer(checkIsLeapYear, 2400);
+// printAnswer(checkIsLeapYear, 1800);
+// printAnswer(checkIsLeapYear, 1900);
+// printAnswer(checkIsLeapYear, 2100);
+// printAnswer(checkIsLeapYear, 2200);
+// printAnswer(checkIsLeapYear, 2300);
+
 let mazdaObj = {
   model_name: "RX-8",
   model_year: "2002",
@@ -978,6 +994,6 @@ const appendHTMLTagToText = (textContents, tag) => {
   );
 };
 
-printAnswer(appendHTMLTagToText, "this line should be bolded.", "<b>");
-printAnswer(appendHTMLTagToText, "this line should be italicized.", "<i>");
-printAnswer(appendHTMLTagToText, "this line should be underlined.", "<u>");
+// printAnswer(appendHTMLTagToText, "this line should be bolded.", "<b>");
+// printAnswer(appendHTMLTagToText, "this line should be italicized.", "<i>");
+// printAnswer(appendHTMLTagToText, "this line should be underlined.", "<u>");
