@@ -757,7 +757,7 @@ const returnParagraphWithBRTags = (paragraph) => {
   return testGraph.replace(new RegExp(/(\r|\r\n|\n)/, "g"), "<br>");
 };
 
-printAnswer(returnParagraphWithBRTags, testGraph);
+// printAnswer(returnParagraphWithBRTags, testGraph);
 
 const returnCapitalizedMultiLineStr = (str) => {
   // extra code here
@@ -968,3 +968,16 @@ const mergeObjAndProps = (
 //   },
 //   true
 // );
+
+// inspired by the 'replace line break with <br> example above
+// this one takes text and applies the specified tag on both sides
+
+const appendHTMLTagToText = (textContents, tag) => {
+  return [tag, textContents, tag.replace(/\w+/, (match) => `\\${match}`)].join(
+    ""
+  );
+};
+
+printAnswer(appendHTMLTagToText, "this line should be bolded.", "<b>");
+printAnswer(appendHTMLTagToText, "this line should be italicized.", "<i>");
+printAnswer(appendHTMLTagToText, "this line should be underlined.", "<u>");
