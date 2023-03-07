@@ -478,9 +478,28 @@ const returnFormattedCurrentDate = (seperator) => {
     .pop();
 };
 
-printAnswer(returnFormattedCurrentDate, "/");
-printAnswer(returnFormattedCurrentDate, "-");
-printAnswer(returnFormattedCurrentDate, "|");
+// printAnswer(returnFormattedCurrentDate, "/");
+// printAnswer(returnFormattedCurrentDate, "-");
+// printAnswer(returnFormattedCurrentDate, "|");
+
+// assume an object with Month, Date, and a non-zero indexed Year
+const returnNumberofDaysBetweenDates = (dateOne, dateTwo) => {
+  let { year: firstYear, month: firstMonth, date: firstDate } = dateOne;
+  let { year: secondYear, month: secondMonth, date: secondDate } = dateTwo;
+
+  return Math.round(
+    Math.abs(
+      new Date(firstYear, firstMonth - 1, firstDate) -
+        new Date(secondYear, secondMonth - 1, secondDate)
+    ) / 86400000
+  );
+};
+
+printAnswer(
+  returnNumberofDaysBetweenDates,
+  { month: 1, date: 11, year: 2018 },
+  { month: 6, date: 27, year: 2025 }
+);
 
 let mazdaObj = {
   model_name: "RX-8",
