@@ -465,6 +465,23 @@ const checkIsLeapYear = (yearToCheck) => {
 // printAnswer(checkIsLeapYear, 2200);
 // printAnswer(checkIsLeapYear, 2300);
 
+const returnFormattedCurrentDate = (seperator) => {
+  // without using the built in formatters, of course
+  return [new Date()]
+    .map((rawDate) => {
+      return [
+        rawDate.getMonth() + 1,
+        rawDate.getDate() < 10 ? `0${rawDate.getDate()}` : rawDate.getDate(),
+        rawDate.getFullYear(),
+      ].join(seperator);
+    })
+    .pop();
+};
+
+printAnswer(returnFormattedCurrentDate, "/");
+printAnswer(returnFormattedCurrentDate, "-");
+printAnswer(returnFormattedCurrentDate, "|");
+
 let mazdaObj = {
   model_name: "RX-8",
   model_year: "2002",
