@@ -335,6 +335,16 @@ const flattenArrays = (blob) => {
 
 // printAnswer(flattenArrays, [[1, [2, 3]], 4, [5, 6], [7], [8, 9]]);
 
+const removeItemFromCollection = (collection, item) => {
+  return collection.filter((itemToRemove) => itemToRemove !== item);
+};
+
+printAnswer(
+  removeItemFromCollection,
+  [1, 2, 3, 1, 4, 5, 1, 6, 7, 1, 1, 8, 9, 10],
+  1
+);
+
 const anagramChecker = (firstWord, secondWord) => {
   return firstWord.length === secondWord.length
     ? firstWord
@@ -495,11 +505,34 @@ const returnNumberofDaysBetweenDates = (dateOne, dateTwo) => {
   );
 };
 
-printAnswer(
-  returnNumberofDaysBetweenDates,
-  { month: 1, date: 11, year: 2018 },
-  { month: 6, date: 27, year: 2025 }
-);
+// printAnswer(
+//   returnNumberofDaysBetweenDates,
+//   { month: 1, date: 11, year: 2018 },
+//   { month: 6, date: 27, year: 2025 }
+// );
+
+// format is year, month, date, hour, minutes, seconds
+const countdownUntilDate = (dateValue) => {
+  let dateConstructorObj = {
+    monthIndex: null,
+    day: null,
+    year: null,
+    hours: null,
+    minutes: null,
+    seconds: null,
+  };
+
+  let dateValues = dateValue.split(/\s+|\W+/);
+  Object.entries(dateConstructorObj).forEach(([k, v], i) => {
+    dateConstructorObj[k] = dateConstructorObj[k] = dateValues[i];
+  });
+
+  return dateConstructorObj;
+};
+
+// console.log(new Date("2022", "11"));
+
+// printAnswer(countdownUntilDate, "Aug 5, 2025 14:22:36");
 
 let mazdaObj = {
   model_name: "RX-8",
