@@ -329,21 +329,36 @@ const diceArray = (arr, sliceSize, startIndex) => {
 
 const flattenArrays = (blob) => {
   return blob.reduce((acc, next) => {
-    return [].concat(...acc, next);
+    return [].concat(...acc).concat(...next);
   });
 };
 
-// printAnswer(flattenArrays, [[1, [2, 3]], 4, [5, 6], [7], [8, 9]]);
+let nestedArr = [[1, [2, 3]], [4], [5, 6, ["a", "b"]], [7], [8, 9]];
+// printAnswer(flattenArrays, nestedArr);
 
 const removeItemFromCollection = (collection, item) => {
   return collection.filter((itemToRemove) => itemToRemove !== item);
 };
 
-printAnswer(
-  removeItemFromCollection,
-  [1, 2, 3, 1, 4, 5, 1, 6, 7, 1, 1, 8, 9, 10],
-  1
-);
+// printAnswer(
+//   removeItemFromCollection,
+//   [1, 2, 3, 1, 4, 5, 1, 6, 7, 1, 1, 8, 9, 10],
+//   1
+// );
+
+const checkIfValueExistsInArrays = (arrays, checkValue) => {
+  // case sensitive
+  return flattenArrays(arrays).indexOf(checkValue) !== -1;
+  return flattenArrays(arrays).includes(checkValue);
+};
+
+let nestedArr2 = [
+  [1, 2, [3, 4]],
+  [5, 6, [7, 9, 10], 11],
+];
+
+printAnswer(checkIfValueExistsInArrays, nestedArr, "b");
+printAnswer(checkIfValueExistsInArrays, nestedArr2, 8);
 
 const anagramChecker = (firstWord, secondWord) => {
   return firstWord.length === secondWord.length
