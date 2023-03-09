@@ -346,6 +346,15 @@ const removeItemFromCollection = (collection, item) => {
 //   1
 // );
 
+const insertItemIntoCollection = (collection, itemToAdd, indexToAddItem) => {
+  return [].concat(
+    collection.slice(0, indexToAddItem),
+    itemToAdd,
+    collection.slice(indexToAddItem)
+  );
+};
+printAnswer(insertItemIntoCollection, [1, 2, 3, 4, 6, 7, 8, 9, 10], 5, 4);
+
 const checkIfValueExistsInArrays = (arrays, checkValue) => {
   // case sensitive
   return flattenArrays(arrays).indexOf(checkValue) !== -1;
@@ -585,7 +594,7 @@ const countdownUntilDate = (firstDate, secondDate) => {
 
 // console.log(new Date("2022", "11"));
 
-printAnswer(countdownUntilDate, "Aug 5, 2025 14:22:36");
+// printAnswer(countdownUntilDate, "Aug 5, 2025 14:22:36");
 
 let mazdaObj = {
   model_name: "RX-8",
