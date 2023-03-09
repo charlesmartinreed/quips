@@ -357,8 +357,8 @@ let nestedArr2 = [
   [5, 6, [7, 9, 10], 11],
 ];
 
-printAnswer(checkIfValueExistsInArrays, nestedArr, "b");
-printAnswer(checkIfValueExistsInArrays, nestedArr2, 8);
+// printAnswer(checkIfValueExistsInArrays, nestedArr, "b");
+// printAnswer(checkIfValueExistsInArrays, nestedArr2, 8);
 
 const anagramChecker = (firstWord, secondWord) => {
   return firstWord.length === secondWord.length
@@ -527,27 +527,65 @@ const returnNumberofDaysBetweenDates = (dateOne, dateTwo) => {
 // );
 
 // format is year, month, date, hour, minutes, seconds
-const countdownUntilDate = (dateValue) => {
-  let dateConstructorObj = {
-    monthIndex: null,
-    day: null,
-    year: null,
-    hours: null,
-    minutes: null,
-    seconds: null,
-  };
+const countdownUntilDate = (firstDate, secondDate) => {
+  // firstDate = parseDate(firstDate);
+  // if (!secondDate) {
+  // let secondsBetweenDates = firstDate - Date.now();
+  // let daysBetweenDates = secondsBetweenDates / 86400 / 60;
+  // return daysBetweenDates;
+  // }
+  // secondDate = parseDate(secondDate);
 
-  let dateValues = dateValue.split(/\s+|\W+/);
-  Object.entries(dateConstructorObj).forEach(([k, v], i) => {
-    dateConstructorObj[k] = dateConstructorObj[k] = dateValues[i];
-  });
+  function parseDate(rawDate) {
+    let dateConstructorObj = {
+      monthIndex: null,
+      day: null,
+      year: null,
+      hours: null,
+      minutes: null,
+      seconds: null,
+    };
 
-  return dateConstructorObj;
+    let monthIndicesMap = [
+      { monthLabel: "January", monthIndex: 0 },
+      { monthLabel: "February", monthIndex: 1 },
+      { monthLabel: "March", monthIndex: 2 },
+      { monthLabel: "April", monthIndex: 3 },
+      { monthLabel: "May", monthIndex: 4 },
+      { monthLabel: "June", monthIndex: 5 },
+      { monthLabel: "July", monthIndex: 6 },
+      { monthLabel: "August", monthIndex: 7 },
+      { monthLabel: "September", monthIndex: 8 },
+      { monthLabel: "October", monthIndex: 9 },
+      { monthLabel: "November", monthIndex: 10 },
+      { monthLabel: "December", monthIndex: 11 },
+    ];
+
+    let dateValues = rawDate.split(/\s+|\W+/);
+
+    Object.entries(dateConstructorObj).forEach(([k, v], i) => {
+      if (new RegExp(/[A-Za-z]+/, "gi").test(dateValues[i]) === true) {
+        let [{ monthIndex }] = monthIndicesMap.filter(
+          ({ monthLabel }) =>
+            new RegExp(String.raw`^${dateValues[i]}+`, "gi").test(
+              monthLabel
+            ) === true
+        );
+        dateConstructorObj[k] = monthIndex;
+      } else {
+        dateConstructorObj[k] = dateValues[i];
+      }
+    });
+
+    let { year, monthIndex, day, hours, minutes, seconds } = dateConstructorObj;
+
+    return new Date(year, monthIndex, day, hours, minutes, seconds);
+  }
 };
 
 // console.log(new Date("2022", "11"));
 
-// printAnswer(countdownUntilDate, "Aug 5, 2025 14:22:36");
+printAnswer(countdownUntilDate, "Aug 5, 2025 14:22:36");
 
 let mazdaObj = {
   model_name: "RX-8",
