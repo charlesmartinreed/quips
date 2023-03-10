@@ -353,16 +353,17 @@ const insertItemIntoCollection = (collection, itemToAdd, indexToAddItem) => {
     collection.slice(indexToAddItem)
   );
 };
+
 // printAnswer(insertItemIntoCollection, [1, 2, 3, 4, 6, 7, 8, 9, 10], 5, 4);
 
 const insertObjInArr = (arr, obj) => {
   return [...arr, obj];
 };
 
-printAnswer(insertObjInArr, ["a", "b", "c", "1", "2", "3"], {
-  name: "Jim",
-  age: 71,
-});
+// printAnswer(insertObjInArr, ["a", "b", "c", "1", "2", "3"], {
+//   name: "Jim",
+//   age: 71,
+// });
 
 const checkIfValueExistsInArrays = (arrays, checkValue) => {
   // case sensitive
@@ -604,6 +605,27 @@ const countdownUntilDate = (firstDate, secondDate) => {
 // console.log(new Date("2022", "11"));
 
 // printAnswer(countdownUntilDate, "Aug 5, 2025 14:22:36");
+
+// by default, this is sorting the name param by length
+// since this is a naive implementation, for demo purposes, this is fine :)
+const sortArrayByObjProp = (arr, prop, direction = "asc") => {
+  return arr.every((obj) => obj.hasOwnProperty(prop))
+    ? arr.sort((a, b) => {
+        return direction === "asc" ? a[prop] - b[prop] : b[prop] - a[prop];
+      })
+    : arr;
+};
+
+let sortObj = [
+  { name: "Sara", age: 18, salary: 37000 },
+  { name: "John", age: 31, salary: 29500 },
+  { name: "Jack", age: 8 },
+  { name: "Blair", age: 45, salary: 45000 },
+];
+
+// printAnswer(sortArrayByObjProp, sortObj, "age", "desc");
+// printAnswer(sortArrayByObjProp, sortObj, "name", "desc");
+// printAnswer(sortArrayByObjProp, sortObj, "salary", "asc");
 
 let mazdaObj = {
   model_name: "RX-8",
