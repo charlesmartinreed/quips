@@ -353,7 +353,16 @@ const insertItemIntoCollection = (collection, itemToAdd, indexToAddItem) => {
     collection.slice(indexToAddItem)
   );
 };
-printAnswer(insertItemIntoCollection, [1, 2, 3, 4, 6, 7, 8, 9, 10], 5, 4);
+// printAnswer(insertItemIntoCollection, [1, 2, 3, 4, 6, 7, 8, 9, 10], 5, 4);
+
+const insertObjInArr = (arr, obj) => {
+  return [...arr, obj];
+};
+
+printAnswer(insertObjInArr, ["a", "b", "c", "1", "2", "3"], {
+  name: "Jim",
+  age: 71,
+});
 
 const checkIfValueExistsInArrays = (arrays, checkValue) => {
   // case sensitive
