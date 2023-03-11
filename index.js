@@ -606,6 +606,13 @@ const countdownUntilDate = (firstDate, secondDate) => {
 
 // printAnswer(countdownUntilDate, "Aug 5, 2025 14:22:36");
 
+let sortObj = [
+  { name: "Sara", age: 18, salary: 37000 },
+  { name: "John", age: 31, salary: 29500 },
+  { name: "Jack", age: 8 },
+  { name: "Blair", age: 45, salary: 45000 },
+];
+
 // by default, this is sorting the name param by length
 // since this is a naive implementation, for demo purposes, this is fine :)
 const sortArrayByObjProp = (arr, prop, direction = "asc") => {
@@ -616,16 +623,23 @@ const sortArrayByObjProp = (arr, prop, direction = "asc") => {
     : arr;
 };
 
-let sortObj = [
-  { name: "Sara", age: 18, salary: 37000 },
-  { name: "John", age: 31, salary: 29500 },
-  { name: "Jack", age: 8 },
-  { name: "Blair", age: 45, salary: 45000 },
-];
-
 // printAnswer(sortArrayByObjProp, sortObj, "age", "desc");
 // printAnswer(sortArrayByObjProp, sortObj, "name", "desc");
 // printAnswer(sortArrayByObjProp, sortObj, "salary", "asc");
+
+const createTwoDimensionalArray = (...arrays) => {
+  return [].reduce((acc, next) => {
+    return [acc, next];
+  }, arrays);
+};
+
+printAnswer(
+  createTwoDimensionalArray,
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [10, 11, 12]
+);
 
 let mazdaObj = {
   model_name: "RX-8",
