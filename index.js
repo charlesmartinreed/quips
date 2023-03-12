@@ -641,17 +641,34 @@ const createTwoDimensionalArray = (...arrays) => {
 //   [10, 11, 12]
 // );
 
-const createMultiDimensionalArray = (arrCount, arrLength, ...arrValues) => {
+const createMultiDimensionalArray = (
+  truncate = true,
+  arrCount,
+  arrLength,
+  ...arrValues
+) => {
   let arrays = [];
   let allValues = arrValues.reduce((acc, next) => [...acc, ...next]);
 
   for (let i = 0; i <= arrLength * 2; i += arrLength) {
-    arrays = [...arrays, ...Array(1).fill(allValues.slice(i, i + 2))];
+    if (i === arrLength * 2 && truncate) {
+      arrays = [...arrays, ...Array(1).fill(allValues.slice(i))];
+    } else {
+      arrays = [...arrays, ...Array(1).fill(allValues.slice(i, i + 2))];
+    }
   }
   return arrays;
 };
 
-printAnswer(createMultiDimensionalArray, 3, 2, [1, 2, 3], [4, 5, 6], [7, 8, 9]);
+printAnswer(
+  createMultiDimensionalArray,
+  false,
+  3,
+  2,
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+);
 
 let mazdaObj = {
   model_name: "RX-8",
