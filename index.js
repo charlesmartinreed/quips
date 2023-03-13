@@ -660,15 +660,29 @@ const createMultiDimensionalArray = (
   return arrays;
 };
 
-printAnswer(
-  createMultiDimensionalArray,
-  false,
-  3,
-  2,
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
-);
+// printAnswer(
+//   createMultiDimensionalArray,
+//   false,
+//   3,
+//   2,
+//   [1, 2, 3],
+//   [4, 5, 6],
+//   [7, 8, 9]
+// );
+
+// given an array of objects, return an array containing the values of the passed in prop
+const extractValuesFromObjAsArr = (arr, propToExtract) => {
+  return arr.map((obj) => {
+    if (obj.hasOwnProperty(propToExtract)) {
+      return obj[propToExtract];
+    } else {
+      return `Object does not contain prop: ${propToExtract}`;
+    }
+  });
+};
+
+printAnswer(extractValuesFromObjAsArr, sortObj, "name");
+printAnswer(extractValuesFromObjAsArr, sortObj, "salary");
 
 let mazdaObj = {
   model_name: "RX-8",
