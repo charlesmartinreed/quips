@@ -684,11 +684,30 @@ const extractValuesFromObjAsArr = (arr, propToExtract) => {
 // printAnswer(extractValuesFromObjAsArr, sortObj, "name");
 // printAnswer(extractValuesFromObjAsArr, sortObj, "salary");
 
-let arrA = [10, 20, "a", "b", false, null];
-let arrB = [10, 20, "a", "b", false, null];
+let arrA = [{ name: "Sally" }, 10, 20, "a", "b", false, null, { a: 1 }];
+let arrB = [20, { name: "Sally" }, 10, "b", "a", null, false, { a: 1 }];
 
-// this is fine the two objects have the same items AND the same order
 const compareTwoArrays = (arr1, arr2) => {
+  // this one is considerably more verbose, but actually checks objects
+  return (
+    arr1.length === arr2.length &&
+    arr1.every((v) => {
+      if (typeof v === "object" && v !== null) {
+        arr2 = arr2.map((item) => {
+          if (typeof item === "object" && item != null) {
+            return JSON.stringify(item);
+          } else {
+            return item;
+          }
+        });
+        return arr2.includes(JSON.stringify(v));
+      } else {
+        return arr2.includes(v);
+      }
+    })
+  );
+
+  // this is fine the two objects have the same items AND the same order
   return arr1.every((v, index) => v === arr2[index]);
 };
 
