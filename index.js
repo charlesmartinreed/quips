@@ -681,8 +681,18 @@ const extractValuesFromObjAsArr = (arr, propToExtract) => {
   });
 };
 
-printAnswer(extractValuesFromObjAsArr, sortObj, "name");
-printAnswer(extractValuesFromObjAsArr, sortObj, "salary");
+// printAnswer(extractValuesFromObjAsArr, sortObj, "name");
+// printAnswer(extractValuesFromObjAsArr, sortObj, "salary");
+
+let arrA = [10, 20, "a", "b", false, null];
+let arrB = [10, 20, "a", "b", false, null];
+
+// this is fine the two objects have the same items AND the same order
+const compareTwoArrays = (arr1, arr2) => {
+  return arr1.every((v, index) => v === arr2[index]);
+};
+
+printAnswer(compareTwoArrays, arrA, arrB);
 
 let mazdaObj = {
   model_name: "RX-8",
