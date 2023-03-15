@@ -387,7 +387,52 @@ const mergeAndRemoveDuplicateItems = (arr1, arr2) => {
   return arr1.filter((item) => !arr2.includes(item)).concat(arr2);
 };
 
-printAnswer(mergeAndRemoveDuplicateItems, mergeTestArr1, mergeTestArr2);
+// printAnswer(mergeAndRemoveDuplicateItems, mergeTestArr1, mergeTestArr2);
+
+const pokemonData = [
+  {
+    name: { eng: "Bulbasaur" },
+    nat_dex_number: "0001",
+    type_primary: "Grass",
+    type_secondary: "Poison",
+  },
+  {
+    name: { eng: "Ivysaur" },
+    nat_dex_number: "0002",
+    type_primary: "Grass",
+    type_secondary: "Poison",
+  },
+  {
+    name: { eng: "Venusaur" },
+    nat_dex_number: "0003",
+    type_primary: "Grass",
+    type_secondary: "Poison",
+  },
+  {
+    name: { eng: "Sprigatito" },
+    nat_dex_number: "0906",
+    type_primary: "Grass",
+    type_secondary: null,
+  },
+  {
+    name: { eng: "Floragato" },
+    nat_dex_number: "0907",
+    type_primary: "Grass",
+    type_secondary: null,
+  },
+  {
+    name: { eng: "Meowscarda" },
+    nat_dex_number: "0908",
+    type_primary: "Grass",
+    type_secondary: "Dark",
+  },
+];
+
+const getRandomItemFromArray = (arr) => {
+  return arr[Math.floor(Math.random() * arr.length)];
+};
+
+printAnswer(getRandomItemFromArray, pokemonData);
 
 const anagramChecker = (firstWord, secondWord) => {
   return firstWord.length === secondWord.length
@@ -721,7 +766,7 @@ const compareTwoArrays = (arr1, arr2) => {
   return arr1.every((v, index) => v === arr2[index]);
 };
 
-printAnswer(compareTwoArrays, arrA, arrB);
+// printAnswer(compareTwoArrays, arrA, arrB);
 
 let mazdaObj = {
   model_name: "RX-8",
