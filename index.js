@@ -94,18 +94,19 @@ const breakDownDigits = (value) => {
   return digits;
 };
 
+// let dupArr = [1, 1, 2, 2, 2, 3, 4, 5, 6, 6, 6, 6, 7, 7, 8, 9, 9, 9, 9, 9, 10];
+
 const removeDuplicateItems = (...items) => {
   // using filter and index of
   return items.filter((item, index) => items.indexOf(item) === index);
 };
-
-// let dupArr = [1, 1, 2, 2, 2, 3, 4, 5, 6, 6, 6, 6, 7, 7, 8, 9, 9, 9, 9, 9, 10];
 // printAnswer(removeDuplicateItems, ...dupArr);
-// printAnswer(removeDuplicateItemsWithSet, ...dupArr);
 
 const removeDuplicateItemsWithSet = (...items) => {
   return Array.from(new Set(items));
 };
+
+// printAnswer(removeDuplicateItemsWithSet, ...dupArr);
 
 const returnFactorialOf = (base) => {
   return base < 0
@@ -378,6 +379,15 @@ let nestedArr2 = [
 
 // printAnswer(checkIfValueExistsInArrays, nestedArr, "b");
 // printAnswer(checkIfValueExistsInArrays, nestedArr2, 8);
+
+const mergeTestArr1 = ["kotsumet", "1,056,012", "March 19, 2012", "is partner"];
+const mergeTestArr2 = ["sherpa", "2,381,138", "June 30, 2017", "is partner"];
+
+const mergeAndRemoveDuplicateItems = (arr1, arr2) => {
+  return arr1.filter((item) => !arr2.includes(item)).concat(arr2);
+};
+
+printAnswer(mergeAndRemoveDuplicateItems, mergeTestArr1, mergeTestArr2);
 
 const anagramChecker = (firstWord, secondWord) => {
   return firstWord.length === secondWord.length
