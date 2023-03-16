@@ -380,14 +380,42 @@ let nestedArr2 = [
 // printAnswer(checkIfValueExistsInArrays, nestedArr, "b");
 // printAnswer(checkIfValueExistsInArrays, nestedArr2, 8);
 
-const mergeTestArr1 = ["kotsumet", "1,056,012", "March 19, 2012", "is partner"];
-const mergeTestArr2 = ["sherpa", "2,381,138", "June 30, 2017", "is partner"];
+const mergeTestArr1 = [
+  "kotsumet",
+  1056012,
+  new Date("March 19, 2012"),
+  { partner_status: true },
+];
 
-const mergeAndRemoveDuplicateItems = (arr1, arr2) => {
-  return arr1.filter((item) => !arr2.includes(item)).concat(arr2);
+const mergeTestArr2 = [
+  "sherpa",
+  2381138,
+  new Date("June 30, 2017"),
+  { partner_status: true },
+];
+
+// try refactoring this with WeakSet
+const mergeAndRemoveDuplicateItems = (...arrs) => {
+  return arrs.reduce((acc, next) => {
+    nextMap = next.map((item) => JSON.stringify(item));
+    let diffs = [];
+    for (let i of acc) {
+      if (!nextMap.includes(JSON.stringify(i))) {
+        diffs = [...diffs, i];
+      } else {
+        let index = nextMap.indexOf(JSON.stringify(i));
+        next = next.slice(0, index);
+      }
+    }
+    diffs = [...diffs, ...next];
+    return diffs;
+  });
 };
 
-// printAnswer(mergeAndRemoveDuplicateItems, mergeTestArr1, mergeTestArr2);
+printAnswer(mergeAndRemoveDuplicateItems, mergeTestArr1, mergeTestArr2);
+// console.log(new Date("March 19, 2012"));
+
+const returnIntersectionBetweenArrs = (arr1, arr2) => {};
 
 const pokemonData = [
   {
@@ -432,7 +460,7 @@ const getRandomItemFromArray = (arr) => {
   return arr[Math.floor(Math.random() * arr.length)];
 };
 
-printAnswer(getRandomItemFromArray, pokemonData);
+// printAnswer(getRandomItemFromArray, pokemonData);
 
 const anagramChecker = (firstWord, secondWord) => {
   return firstWord.length === secondWord.length
