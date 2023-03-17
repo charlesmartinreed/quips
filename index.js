@@ -420,6 +420,7 @@ const mergeAndRemoveDuplicateItems = (...arrs) => {
 const returnIntersectionBetweenArrs = (...arrays) => {
   return [...arrays].reduce((acc, next) => {
     let setA = new Set(acc);
+    // let setAObjs = new Set();
     let setB = new Set(next);
 
     let sharedVals = [];
@@ -432,17 +433,40 @@ const returnIntersectionBetweenArrs = (...arrays) => {
   });
 };
 
-const intersectArr1 = [1, 2, 3, 4, 5, 6, 13];
-const intersectArr2 = [2, 4, 6, 8, 10, 12, 13];
-const intersectArr3 = [3, 6, 9, 12, 15, 18, 13];
-// 6
+const intersectArr1 = [1, 2, 3, 4, 5, 6, { a: 1 }];
+const intersectArr2 = [2, 4, 6, 8, { a: 1 }, 10, 12];
+const intersectArr3 = [3, 6, { a: 1 }, 9, 12, 15, 18, 13];
 
-printAnswer(
-  returnIntersectionBetweenArrs,
-  intersectArr1,
-  intersectArr2,
-  intersectArr3
-);
+// printAnswer(
+//   returnIntersectionBetweenArrs,
+//   intersectArr1,
+//   intersectArr2,
+//   intersectArr3
+// );
+
+const removeNullOrUndefinedVals = (values) => {
+  return values.filter((value) => value !== null && value !== undefined);
+};
+
+printAnswer(removeNullOrUndefinedVals, [
+  1,
+  undefined,
+  2,
+  null,
+  3,
+  undefined,
+  null,
+  4,
+]);
+
+// did you know this was possible? kinda cool, right?
+const sumsAndExponents = (a = 10, b = a ** 2, c = b ** 2, d = c ** 2) => {
+  // 10 + 100 ** 2 + 10000 ** 2 + 100000000 = 100010110
+  return a + b + c + d;
+};
+
+console.log(10000 ** 2);
+printAnswer(sumsAndExponents);
 
 const pokemonData = [
   {
