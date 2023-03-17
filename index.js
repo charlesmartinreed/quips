@@ -403,6 +403,8 @@ const mergeAndRemoveDuplicateItems = (...arrs) => {
       if (!nextMap.includes(JSON.stringify(i))) {
         diffs = [...diffs, i];
       } else {
+        // this removes the duplicated item altogether
+        // comment this out to keep ONE copy of the shared item between the arrays
         let index = nextMap.indexOf(JSON.stringify(i));
         next = next.slice(0, index);
       }
@@ -412,10 +414,35 @@ const mergeAndRemoveDuplicateItems = (...arrs) => {
   });
 };
 
-printAnswer(mergeAndRemoveDuplicateItems, mergeTestArr1, mergeTestArr2);
+// printAnswer(mergeAndRemoveDuplicateItems, mergeTestArr1, mergeTestArr2);
 // console.log(new Date("March 19, 2012"));
 
-const returnIntersectionBetweenArrs = (arr1, arr2) => {};
+const returnIntersectionBetweenArrs = (...arrays) => {
+  return [...arrays].reduce((acc, next) => {
+    let setA = new Set(acc);
+    let setB = new Set(next);
+
+    let sharedVals = [];
+    for (let val of setB) {
+      if (setA.has(val)) {
+        sharedVals = [...sharedVals, val];
+      }
+    }
+    return sharedVals;
+  });
+};
+
+const intersectArr1 = [1, 2, 3, 4, 5, 6, 13];
+const intersectArr2 = [2, 4, 6, 8, 10, 12, 13];
+const intersectArr3 = [3, 6, 9, 12, 15, 18, 13];
+// 6
+
+printAnswer(
+  returnIntersectionBetweenArrs,
+  intersectArr1,
+  intersectArr2,
+  intersectArr3
+);
 
 const pokemonData = [
   {
