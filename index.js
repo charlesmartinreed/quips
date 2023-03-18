@@ -419,9 +419,25 @@ const mergeAndRemoveDuplicateItems = (...arrs) => {
 
 const returnIntersectionBetweenArrs = (...arrays) => {
   return [...arrays].reduce((acc, next) => {
-    let setA = new Set(acc);
-    // let setAObjs = new Set();
-    let setB = new Set(next);
+    let setA = new Set(
+      acc.map((j) => {
+        if (typeof j === "object") {
+          return JSON.stringify(j);
+        } else {
+          return j;
+        }
+      })
+    );
+
+    let setB = new Set(
+      next.map((k) => {
+        if (typeof k === "object") {
+          return JSON.stringify(k);
+        } else {
+          return k;
+        }
+      })
+    );
 
     let sharedVals = [];
     for (let val of setB) {
@@ -433,31 +449,32 @@ const returnIntersectionBetweenArrs = (...arrays) => {
   });
 };
 
+
 const intersectArr1 = [1, 2, 3, 4, 5, 6, { a: 1 }];
 const intersectArr2 = [2, 4, 6, 8, { a: 1 }, 10, 12];
 const intersectArr3 = [3, 6, { a: 1 }, 9, 12, 15, 18, 13];
 
-// printAnswer(
-//   returnIntersectionBetweenArrs,
-//   intersectArr1,
-//   intersectArr2,
-//   intersectArr3
-// );
+printAnswer(
+  returnIntersectionBetweenArrs,
+  intersectArr1,
+  intersectArr2,
+  intersectArr3
+);
 
 const removeNullOrUndefinedVals = (values) => {
   return values.filter((value) => value !== null && value !== undefined);
 };
 
-printAnswer(removeNullOrUndefinedVals, [
-  1,
-  undefined,
-  2,
-  null,
-  3,
-  undefined,
-  null,
-  4,
-]);
+// printAnswer(removeNullOrUndefinedVals, [
+//   1,
+//   undefined,
+//   2,
+//   null,
+//   3,
+//   undefined,
+//   null,
+//   4,
+// ]);
 
 // did you know this was possible? kinda cool, right?
 const sumsAndExponents = (a = 10, b = a ** 2, c = b ** 2, d = c ** 2) => {
@@ -465,8 +482,7 @@ const sumsAndExponents = (a = 10, b = a ** 2, c = b ** 2, d = c ** 2) => {
   return a + b + c + d;
 };
 
-console.log(10000 ** 2);
-printAnswer(sumsAndExponents);
+// printAnswer(sumsAndExponents);
 
 const pokemonData = [
   {
