@@ -458,12 +458,12 @@ const intersectArr1 = [1, "test", 2, 3, 4, 5, 6, { a: 1 }];
 const intersectArr2 = [2, 4, 6, 8, "test", { a: 1 }, 10, 12];
 const intersectArr3 = [3, 6, { a: 1 }, 9, 12, "test", 15, 18, 13];
 
-printAnswer(
-  returnIntersectionBetweenArrs,
-  intersectArr1,
-  intersectArr2,
-  intersectArr3
-);
+// printAnswer(
+//   returnIntersectionBetweenArrs,
+//   intersectArr1,
+//   intersectArr2,
+//   intersectArr3
+// );
 
 const removeNullOrUndefinedVals = (values) => {
   return values.filter((value) => value !== null && value !== undefined);
@@ -1399,3 +1399,16 @@ const appendHTMLTagToText = (textContents, tag) => {
 // printAnswer(appendHTMLTagToText, "this line should be bolded.", "<b>");
 // printAnswer(appendHTMLTagToText, "this line should be italicized.", "<i>");
 // printAnswer(appendHTMLTagToText, "this line should be underlined.", "<u>");
+
+// Per MDN: The instanceof operator tests to see if the prototype property
+// of a constructor appears anywhere in the prototype chain of an object.
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof
+
+function testFunc() {
+  return "hello world";
+}
+const testStringInstance = new String("hello world");
+console.log(testFunc instanceof Function); // true
+console.log((function () {})() instanceof Function); // false
+console.log(testStringInstance instanceof String); // true
+console.log("hello world" instanceof String); // false
