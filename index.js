@@ -442,17 +442,21 @@ const returnIntersectionBetweenArrs = (...arrays) => {
     let sharedVals = [];
     for (let val of setB) {
       if (setA.has(val)) {
-        sharedVals = [...sharedVals, val];
+        try {
+          val = JSON.parse(val);
+        } catch (e) {
+        } finally {
+          sharedVals = [...sharedVals, val];
+        }
       }
     }
     return sharedVals;
   });
 };
 
-
-const intersectArr1 = [1, 2, 3, 4, 5, 6, { a: 1 }];
-const intersectArr2 = [2, 4, 6, 8, { a: 1 }, 10, 12];
-const intersectArr3 = [3, 6, { a: 1 }, 9, 12, 15, 18, 13];
+const intersectArr1 = [1, "test", 2, 3, 4, 5, 6, { a: 1 }];
+const intersectArr2 = [2, 4, 6, 8, "test", { a: 1 }, 10, 12];
+const intersectArr3 = [3, 6, { a: 1 }, 9, 12, "test", 15, 18, 13];
 
 printAnswer(
   returnIntersectionBetweenArrs,
