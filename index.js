@@ -1230,6 +1230,14 @@ const formatAsCurrency = (val, userLocation) => {
 // printAnswer(formatAsCurrency, 12345.6789, "Japan");
 // printAnswer(formatAsCurrency, 12345.6789, "Brazil");
 
+const executeFunctionAfterDelay = (functionToExecute, delay) => {
+  setTimeout(functionToExecute, delay);
+};
+
+executeFunctionAfterDelay(function saySomething() {
+  console.log("hello world");
+}, 5000);
+
 /* 
 =====================
 RANDOM 'COMMON' CODE SCREENING CHALLENGES YOU MIGHT ENCOUNTER
