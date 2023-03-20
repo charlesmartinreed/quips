@@ -1238,32 +1238,40 @@ const executeFunctionAfterDelay = (functionToExecute, delay) => {
 //   console.log("hello world");
 // }, 5000);
 
+function* generateAndYieldRandomString() {
+  let lowerBound = 33;
+  let upperBound = 126;
+
+  yield String.fromCharCode(
+    Math.floor(Math.random() * (upperBound - lowerBound) + lowerBound)
+  );
+}
+
+// let test = generateAndYieldRandomString();
+// console.log(generateAndYieldRandomString().next().value);
+
 // ignore the fact that this uses characters that
 // wouldn't be permissible in most password situations
 // this is just a simple coding exercise, after all!
-const generateSimplePassword = (length = 12, useSpecialCharacters = true) => {
+const generateSimplePassword = (length = 12, useSpecialCharacters = false) => {
   return Array(length)
     .fill(null)
     .map((v) => {
-      let upperBound = 126;
-      let lowerBound = 33;
-      let generatedcharCode = Math.floor(
-        Math.random() * (upperBound - lowerBound) + lowerBound
-      );
+      let generatedcharCode = generateAndYieldRandomString().next().value;
 
       if (!useSpecialCharacters) {
-        while (/\w/i.test(String.fromCharCode(generatedcharCode)) === false) {
-          generatedcharCode = Math.floor(
-            Math.random() * (upperBound - lowerBound) + lowerBound
-          );
+        // as opposed to /w, which would include _
+        while (!/[a-zA-Z0-9]/i.test(generatedcharCode)) {
+          generatedcharCode = generateAndYieldRandomString().next().value;
         }
       }
-      return String.fromCharCode(generatedcharCode);
+      return generatedcharCode;
     })
     .join("");
 };
 
-// printAnswer(generateSimplePassword);
+printAnswer(generateSimplePassword, 11, true);
+printAnswer(generateSimplePassword, 23, false);
 
 const numberTypeChecker = (val) => {
   return (typeof val !== "number" && !Number(val)) || isNaN(val)
@@ -1281,12 +1289,12 @@ const numberTypeChecker = (val) => {
   }
 };
 
-printAnswer(numberTypeChecker, 13);
-printAnswer(numberTypeChecker, "ab");
-printAnswer(numberTypeChecker, "123.4567");
-printAnswer(numberTypeChecker, null);
-printAnswer(numberTypeChecker, 908.1293);
-printAnswer(numberTypeChecker, false);
+// printAnswer(numberTypeChecker, 13);
+// printAnswer(numberTypeChecker, "ab");
+// printAnswer(numberTypeChecker, "123.4567");
+// printAnswer(numberTypeChecker, null);
+// printAnswer(numberTypeChecker, 908.1293);
+// printAnswer(numberTypeChecker, false);
 
 /* 
 =====================
