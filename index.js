@@ -1234,9 +1234,41 @@ const executeFunctionAfterDelay = (functionToExecute, delay) => {
   setTimeout(functionToExecute, delay);
 };
 
-executeFunctionAfterDelay(function saySomething() {
-  console.log("hello world");
-}, 5000);
+// executeFunctionAfterDelay(function saySomething() {
+//   console.log("hello world");
+// }, 5000);
+
+const generateSimplePassword = (length = 12, useSpecialCharacters = true) => {
+  // let str = "";
+  // for (let i = 33; i < 126; i++) {
+  //   str += String.fromCharCode(i);
+  // }
+
+  // return str;
+  return Array(length)
+    .fill(null)
+    .map((v) => {
+      let upperBound = 126;
+      let lowerBound = 33;
+      let generatedcharCode = Math.floor(
+        Math.random() * (upperBound - lowerBound) + lowerBound
+      );
+
+      if (!useSpecialCharacters) {
+        while (/\w/i.test(String.fromCharCode(generatedcharCode)) === false) {
+          generatedcharCode = Math.floor(
+            Math.random() * (upperBound - lowerBound) + lowerBound
+          );
+        }
+      }
+      return String.fromCharCode(generatedcharCode);
+    })
+    .join("");
+};
+
+// console.log(/\w|^_/gi.test("_"));
+printAnswer(generateSimplePassword);
+// console.log(String.fromCharCode(32));
 
 /* 
 =====================
@@ -1416,7 +1448,7 @@ function testFunc() {
   return "hello world";
 }
 const testStringInstance = new String("hello world");
-console.log(testFunc instanceof Function); // true
-console.log((function () {})() instanceof Function); // false
-console.log(testStringInstance instanceof String); // true
-console.log("hello world" instanceof String); // false
+// console.log(testFunc instanceof Function); // true
+// console.log((function () {})() instanceof Function); // false
+// console.log(testStringInstance instanceof String); // true
+// console.log("hello world" instanceof String); // false
