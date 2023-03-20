@@ -1238,13 +1238,10 @@ const executeFunctionAfterDelay = (functionToExecute, delay) => {
 //   console.log("hello world");
 // }, 5000);
 
+// ignore the fact that this uses characters that
+// wouldn't be permissible in most password situations
+// this is just a simple coding exercise, after all!
 const generateSimplePassword = (length = 12, useSpecialCharacters = true) => {
-  // let str = "";
-  // for (let i = 33; i < 126; i++) {
-  //   str += String.fromCharCode(i);
-  // }
-
-  // return str;
   return Array(length)
     .fill(null)
     .map((v) => {
@@ -1266,9 +1263,30 @@ const generateSimplePassword = (length = 12, useSpecialCharacters = true) => {
     .join("");
 };
 
-// console.log(/\w|^_/gi.test("_"));
-printAnswer(generateSimplePassword);
-// console.log(String.fromCharCode(32));
+// printAnswer(generateSimplePassword);
+
+const numberTypeChecker = (val) => {
+  return (typeof val !== "number" && !Number(val)) || isNaN(val)
+    ? `${val} is not a number at all, actually`
+    : Number.isInteger(val)
+    ? `${val} is an Integer`
+    : `${val} is a Floating Point Number`;
+  switch (val) {
+    case Number.isInteger(val):
+      return `${val} is an Integer.`;
+    case Number.isNaN(val):
+      return `${val} is not a number at all, actually`;
+    default:
+      return `${val} is a Floating Point Number.`;
+  }
+};
+
+printAnswer(numberTypeChecker, 13);
+printAnswer(numberTypeChecker, "ab");
+printAnswer(numberTypeChecker, "123.4567");
+printAnswer(numberTypeChecker, null);
+printAnswer(numberTypeChecker, 908.1293);
+printAnswer(numberTypeChecker, false);
 
 /* 
 =====================
