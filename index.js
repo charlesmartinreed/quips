@@ -686,6 +686,15 @@ const returnFormattedCurrentDate = (seperator) => {
 // printAnswer(returnFormattedCurrentDate, "-");
 // printAnswer(returnFormattedCurrentDate, "|");
 
+const returnNumberOfSecondsBetween = (dateA, dateB) => {
+  return Math.abs(dateA.getTime() - dateB.getTime()) / 1000;
+};
+
+let firstDate = new Date("January 3, 2022");
+let secondDate = new Date("January 4, 2022");
+  
+printAnswer(returnNumberOfSecondsBetween, firstDate, secondDate);
+
 // assume an object with Month, Date, and a non-zero indexed Year
 const returnNumberofDaysBetweenDates = (dateOne, dateTwo) => {
   let { year: firstYear, month: firstMonth, date: firstDate } = dateOne;
