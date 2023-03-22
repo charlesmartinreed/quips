@@ -632,6 +632,12 @@ const trimString = (str) => {
 
 // printAnswer(trimString, "      Hello World    !");
 
+const removeAllWhiteSpace = (str) => {
+  return str.replace(/\s+/g, "");
+};
+
+printAnswer(removeAllWhiteSpace, " H e l lo    Wo r ld!   ");
+
 const checkIfStringsMatch = (str1, str2) => {
   // localeCompare returns a number indicating
   // if the reference string comes before (return -1), after (1) or is equal (0)
@@ -1270,8 +1276,8 @@ const generateSimplePassword = (length = 12, useSpecialCharacters = false) => {
     .join("");
 };
 
-printAnswer(generateSimplePassword, 11, true);
-printAnswer(generateSimplePassword, 23, false);
+// printAnswer(generateSimplePassword, 11, true);
+// printAnswer(generateSimplePassword, 23, false);
 
 const numberTypeChecker = (val) => {
   return (typeof val !== "number" && !Number(val)) || isNaN(val)
