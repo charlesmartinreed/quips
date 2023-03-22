@@ -687,12 +687,15 @@ const returnFormattedCurrentDate = (seperator) => {
 // printAnswer(returnFormattedCurrentDate, "|");
 
 const returnNumberOfSecondsBetween = (dateA, dateB) => {
-  return Math.abs(dateA.getTime() - dateB.getTime()) / 1000;
+  return !isNaN(Date.parse(firstDate)) && !isNaN(Date.parse(secondDate))
+    ? Math.abs(dateA.getTime() - dateB.getTime()) / 1000
+    : "one or more of the Date arguments is not a valid date";
 };
 
 let firstDate = new Date("January 3, 2022");
-let secondDate = new Date("January 4, 2022");
-  
+let secondDate = new Date("{a: 1}");
+// let secondDate = new Date("January 4, 2022");
+
 printAnswer(returnNumberOfSecondsBetween, firstDate, secondDate);
 
 // assume an object with Month, Date, and a non-zero indexed Year
