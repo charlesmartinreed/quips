@@ -8,6 +8,31 @@ function printAnswer(fn) {
   console.log("Result of", fn.name, "is", result);
 }
 
+// in JavaScript. if two functions have the same name
+// the function that is defined last is the one that gets called
+function overloader() {
+  return arguments[0] + arguments[1];
+}
+
+function overloader() {
+  // normally function overloading refers to functions with same name
+  // but different implementation
+  // that's still kinda true here, in JS.
+  switch (arguments.length) {
+    case 0:
+      console.log("The overloader function requires at least two arguments");
+      break;
+    case 1:
+      console.log(
+        `You've passed in one arguments, but this function requires at least two numbers.`
+      );
+    default:
+      return [...arguments].reduce((acc, next) => acc + next);
+  }
+}
+
+printAnswer(overloader, 5, 10, 15, 20);
+
 const makeArray = (start = 0, end = 1, interval = 1) => {
   return Array(Math.ceil((end - start + 1) / interval))
     .fill(start)
