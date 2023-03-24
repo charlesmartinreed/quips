@@ -31,7 +31,7 @@ function overloader() {
   }
 }
 
-printAnswer(overloader, 5, 10, 15, 20);
+// printAnswer(overloader, 5, 10, 15, 20);
 
 const makeArray = (start = 0, end = 1, interval = 1) => {
   return Array(Math.ceil((end - start + 1) / interval))
@@ -661,7 +661,7 @@ const removeAllWhiteSpace = (str) => {
   return str.replace(/\s+/g, "");
 };
 
-printAnswer(removeAllWhiteSpace, " H e l lo    Wo r ld!   ");
+// printAnswer(removeAllWhiteSpace, " H e l lo    Wo r ld!   ");
 
 const checkIfStringsMatch = (str1, str2) => {
   // localeCompare returns a number indicating
@@ -721,7 +721,7 @@ let firstDate = new Date("January 3, 2022");
 let secondDate = new Date("{a: 1}");
 // let secondDate = new Date("January 4, 2022");
 
-printAnswer(returnNumberOfSecondsBetween, firstDate, secondDate);
+// printAnswer(returnNumberOfSecondsBetween, firstDate, secondDate);
 
 // assume an object with Month, Date, and a non-zero indexed Year
 const returnNumberofDaysBetweenDates = (dateOne, dateTwo) => {
@@ -1521,3 +1521,81 @@ const testStringInstance = new String("hello world");
 // console.log((function () {})() instanceof Function); // false
 // console.log(testStringInstance instanceof String); // true
 // console.log("hello world" instanceof String); // false
+
+// STACK: LAST IN, FIRST OUT data structure
+// imagine a stack of books, when you add a new book to the top
+// it is now the "first" in the stack of books
+
+// here's an example of a FIXED-SIZE STACK
+// inspired by this simple implementation from programiz
+// https://www.programiz.com/javascript/examples/stack
+
+class Stack {
+  constructor(maxStackLen = 8) {
+    this.maxSize = maxStackLen;
+    this.stackItems = Array(maxStackLen).fill(null);
+  }
+
+  maxStackSize() {
+    return this.maxSize;
+  }
+
+  currentStackSize() {
+    return this.stackItems.filter((k) => k !== null).length;
+  }
+
+  stackIsEmpty() {
+    return (
+      this.stackItems.length === 0 || this.stackItems.every((n) => n === null)
+    );
+  }
+
+  add(newItem) {
+    this.stackItems.shift();
+    this.stackItems.push(newItem);
+    return this.stackItems;
+  }
+
+  remove() {
+    this.stackItems.pop();
+    this.stackItems.unshift(null);
+    return this.stackItems;
+  }
+
+  peek() {
+    return this.stackItems[this.stackItems.length - 1];
+  }
+
+  clear() {
+    this.stackItems = this.stackItems.map((k) => (k !== null ? null : k));
+    return this.stackItems;
+  }
+}
+
+let testStack = new Stack();
+// console.log("Max stack size is set to", testStack.maxStackSize(), "items.");
+
+testStack.add(0);
+testStack.add(1);
+testStack.add(1);
+testStack.add(2);
+
+// testStack.remove(); // removes 2
+console.log("Currently filled stack spaces", testStack.currentStackSize());
+testStack.add(3);
+testStack.add(5);
+testStack.add(8);
+testStack.add(13);
+testStack.add(21);
+
+console.log("Last item in stack is", testStack.peek());
+
+console.log("Stack is currently empty?", testStack.stackIsEmpty());
+console.log("Stack items are currently", testStack.stackItems);
+// testStack.remove();
+// testStack.remove();
+console.log("Currently filled stack spaces", testStack.currentStackSize());
+
+testStack.clear();
+console.log("Stack items are currently", testStack.stackItems);
+console.log("Stack is currently empty?", testStack.stackIsEmpty());
