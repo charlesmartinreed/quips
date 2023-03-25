@@ -1572,30 +1572,107 @@ class Stack {
   }
 }
 
-let testStack = new Stack();
+// let testStack = new Stack();
 // console.log("Max stack size is set to", testStack.maxStackSize(), "items.");
 
-testStack.add(0);
-testStack.add(1);
-testStack.add(1);
-testStack.add(2);
+// testStack.add(0);
+// testStack.add(1);
+// testStack.add(1);
+// testStack.add(2);
 
 // testStack.remove(); // removes 2
-console.log("Currently filled stack spaces", testStack.currentStackSize());
-testStack.add(3);
-testStack.add(5);
-testStack.add(8);
-testStack.add(13);
-testStack.add(21);
+// console.log("Currently filled stack spaces", testStack.currentStackSize());
+// testStack.add(3);
+// testStack.add(5);
+// testStack.add(8);
+// testStack.add(13);
+// testStack.add(21);
 
-console.log("Last item in stack is", testStack.peek());
+// console.log("Last item in stack is", testStack.peek());
 
-console.log("Stack is currently empty?", testStack.stackIsEmpty());
-console.log("Stack items are currently", testStack.stackItems);
+// console.log("Stack is currently empty?", testStack.stackIsEmpty());
+// console.log("Stack items are currently", testStack.stackItems);
 // testStack.remove();
 // testStack.remove();
-console.log("Currently filled stack spaces", testStack.currentStackSize());
+// console.log("Currently filled stack spaces", testStack.currentStackSize());
 
-testStack.clear();
-console.log("Stack items are currently", testStack.stackItems);
-console.log("Stack is currently empty?", testStack.stackIsEmpty());
+// testStack.clear();
+// console.log("Stack items are currently", testStack.stackItems);
+// console.log("Stack is currently empty?", testStack.stackIsEmpty());
+
+// QUEUE: FIRST IN, FIRST OUT data structure
+// imagine standing in line for a basketball game
+// the first person in gets the first ticket (first IN)
+// and therefore is the first to leave the line, into the arena (first OUT)
+
+// inspired by this simple implementation from programiz
+// https://www.programiz.com/javascript/examples/stack
+
+class Queue {
+  constructor() {
+    this.queueItems = {};
+    this.headIndex = 0;
+    this.tailIndex = 0;
+  }
+
+  isEmpty() {
+    return Object.entries(this.queueItems).length === 0 ? true : false;
+  }
+
+  addToQueue(item) {
+    this.queueItems[this.tailIndex] = item;
+    this.tailIndex++;
+    return this.queueItems;
+  }
+
+  removeFromQueue() {
+    let [removeKey] = Object.keys(this.queueItems).filter(
+      (_, index) => index === this.headIndex
+    );
+    delete this.queueItems[removeKey];
+    return this.queueItems;
+  }
+
+  peek() {
+    let [peekKey] = Object.keys(this.queueItems).filter(
+      (_, index) => index === this.headIndex
+    );
+    return this.queueItems[peekKey];
+  }
+
+  size() {
+    return Object.entries(this.queueItems).length;
+  }
+
+  clear() {
+    this.queueItems = Object.assign({});
+  }
+
+  currentQueue() {
+    return this.queueItems;
+  }
+}
+
+let testQueue = new Queue();
+console.log("queue is currently empty", testQueue.isEmpty());
+testQueue.addToQueue(0);
+testQueue.addToQueue(1);
+testQueue.addToQueue(1);
+testQueue.addToQueue(2);
+testQueue.addToQueue(3);
+testQueue.addToQueue(5);
+console.log(testQueue.removeFromQueue());
+testQueue.addToQueue(8);
+console.log(testQueue.removeFromQueue());
+
+console.log("head of queue is", testQueue.peek());
+console.log("current queue is", testQueue.currentQueue());
+console.log("size of queue is", testQueue.size());
+console.log("queue is currently empty", testQueue.isEmpty());
+
+testQueue.clear();
+console.log("current queue is", testQueue.currentQueue());
+console.log("queue is currently empty", testQueue.isEmpty());
+
+// let degege = { a: 1, b: 2, c: 3 };
+// console.log(degege["a"]);
