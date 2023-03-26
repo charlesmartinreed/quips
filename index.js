@@ -1339,6 +1339,26 @@ const numberTypeChecker = (val) => {
 // printAnswer(numberTypeChecker, 908.1293);
 // printAnswer(numberTypeChecker, false);
 
+// assume the simplest URL possible, protocol, subdomain, domain, tld
+// return an object containing the same
+const urlParser = (addrStr) => {
+  return addrStr
+    .split(/\W+/g)
+    .map((value, index) => {
+      let keys = ["Protocol", "Subdomain", "Domain", "TLD"];
+      let obj = {};
+      obj[keys[index]] = value;
+
+      return obj;
+    })
+    .reduce((acc, next) => {
+      acc = { ...acc, ...next };
+      return acc;
+    });
+};
+
+printAnswer(urlParser, "https://en.wikipedia.org");
+
 /* 
 =====================
 RANDOM 'COMMON' CODE SCREENING CHALLENGES YOU MIGHT ENCOUNTER
@@ -1653,26 +1673,23 @@ class Queue {
   }
 }
 
-let testQueue = new Queue();
-console.log("queue is currently empty", testQueue.isEmpty());
-testQueue.addToQueue(0);
-testQueue.addToQueue(1);
-testQueue.addToQueue(1);
-testQueue.addToQueue(2);
-testQueue.addToQueue(3);
-testQueue.addToQueue(5);
-console.log(testQueue.removeFromQueue());
-testQueue.addToQueue(8);
-console.log(testQueue.removeFromQueue());
+// let testQueue = new Queue();
+// console.log("queue is currently empty", testQueue.isEmpty());
+// testQueue.addToQueue(0);
+// testQueue.addToQueue(1);
+// testQueue.addToQueue(1);
+// testQueue.addToQueue(2);
+// testQueue.addToQueue(3);
+// testQueue.addToQueue(5);
+// console.log(testQueue.removeFromQueue());
+// testQueue.addToQueue(8);
+// console.log(testQueue.removeFromQueue());
 
-console.log("head of queue is", testQueue.peek());
-console.log("current queue is", testQueue.currentQueue());
-console.log("size of queue is", testQueue.size());
-console.log("queue is currently empty", testQueue.isEmpty());
+// console.log("head of queue is", testQueue.peek());
+// console.log("current queue is", testQueue.currentQueue());
+// console.log("size of queue is", testQueue.size());
+// console.log("queue is currently empty", testQueue.isEmpty());
 
-testQueue.clear();
-console.log("current queue is", testQueue.currentQueue());
-console.log("queue is currently empty", testQueue.isEmpty());
-
-// let degege = { a: 1, b: 2, c: 3 };
-// console.log(degege["a"]);
+// testQueue.clear();
+// console.log("current queue is", testQueue.currentQueue());
+// console.log("queue is currently empty", testQueue.isEmpty());
