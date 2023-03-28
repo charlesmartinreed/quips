@@ -1362,8 +1362,12 @@ const urlParser = (addrStr) => {
 let testImgSrc = `<img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*a__3IyfVHcksJuJnrHDN8A.jpeg">`;
 
 const imgAttrParser = (imageToParse) => {
+  // return imageToParse.split(/[\W{1,}]+/i);
+
+  return imageToParse.replace(/(img|<|>|\s)/gi, "").split(/([\b{1,}]="|;)/i);
+  return imageToParse.split(/[\W{1,}]+/i);
+
   return imageToParse.split(/[\b{1,}="\b{1,};]+/i);
-  return imageToParse.split(/^\b$="+/gi);
 };
 
 console.log(imgAttrParser(testImgSrc));
