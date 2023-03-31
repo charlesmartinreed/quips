@@ -1359,14 +1359,31 @@ const urlParser = (addrStr) => {
 
 // printAnswer(urlParser, "https://en.wikipedia.org");
 
-let testImgSrc = `<img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*a__3IyfVHcksJuJnrHDN8A.jpeg">`;
+let testImgSrc = `<img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%); transition: background-color 300ms;" src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*a__3IyfVHcksJuJnrHDN8A.jpeg">`;
 
 const attrParser = (elemToParse) => {
-  let tag = /[A-Za-z]{1,}/i.exec(elemToParse)[0];
-  return elemToParse.replace(/(img|<|>|\s)/gi, "").split(/([\b{1,}]="|;)/i);
+  const tag = /[A-Za-z]{1,}/i.exec(elemToParse)[0];
+  const tagRegEx = new RegExp(String.raw`<${tag}\s`, "gi");
+
+  elemToParse = elemToParse.replace(tagRegEx, "");
+  const elemsArr = elemToParse.split(/;"\s/i);
+
+  let attrs = elemsArr.map((elem) => {
+    let elemTag = /[A-Za-z]{1,}="/i.exec(elem)[0];
+    elem = elem.replace(elemTag, "");
+    elemTag = elemTag.replace('="', "");
+
+    const attrList = elem.split(";");
+
+    const attrObj = {};
+    attrObj[elemTag] = attrList;
+
+    return attrObj;
+  });
+  return attrs;
 };
 
-console.log(attrParser(testImgSrc));
+printAnswer(attrParser, testImgSrc);
 
 /* 
 =====================
